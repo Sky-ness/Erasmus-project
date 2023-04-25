@@ -9,8 +9,7 @@
     "watch": "webpack --mode=development --watch",
     "start": "webpack serve --mode=development"
   },
-  "author": "Thomas Fritsch <thomas.fritsch@univ-lille.fr> (https://gitlab.univ-lille.fr/thomas.fritsch)",
-  "homepage": "https://gitlab.univ-lille.fr/js",
+  "author": "Antonin Duvauchel <Antonin.Duvauchel@laposte.net> - Audrey Heurtaux ",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.20.7",
