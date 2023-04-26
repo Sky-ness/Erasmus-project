@@ -1,16 +1,19 @@
-import { OliveTree } from "./model/OliveTree.js";
+//import EditView from "./view/EditView.js";
+//import AddView from "./view/addView.js";
 
-import OliveTreeListView from "./view/OliveTreeListView.js";
-import EditView from "./view/EditView.js";
-import AddView from "./view/addView.js";
+import { OliveTree } from "../../server/main/OliveTree";
+import OliveTreeListView from "./view/OliveTreeListView";
 
 console.log("hello world");
 
 const linkApi = "";
 
-let oliveTree = new OliveTree();
+let oliveTree = new OliveTree("test", 1, 1, 1, 1);
 
-const mainView = new OliveTreeListView(".olive-trees .mainView", linkApi);
+let olive = document.querySelector(".olive-trees .mainView") as HTMLElement;
+if (olive) {
+  const mainView = new OliveTreeListView(olive, linkApi);
+}
 
 /*
 const editView = new EditView(".olive-trees .editView", oliveTree);

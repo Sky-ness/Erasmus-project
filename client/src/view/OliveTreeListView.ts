@@ -1,16 +1,17 @@
-import View from "./View.js";
+import View from "./View";
 export default class OliveTreeListView extends View {
-  constructor(element, json) {
+  oliveTrees: any;
+  constructor(element: HTMLElement, json: any) {
     super(element);
     this.oliveTrees = this.refreshData(json);
     this.show();
   }
-  refreshData(json) {
+  refreshData(json: any) {
     fetch(json)
       .then((response) => response.json())
       .then((data) => {
         this.oliveTrees = data.results;
-        displaySinglePage(this.oliveTrees, 10);
+        this.displaySinglePage(this.oliveTrees, 10);
       });
   }
   /* Pour une api
@@ -48,5 +49,5 @@ export default class OliveTreeListView extends View {
   }
   */
   filterForm() {}
-  displaySinglePage(oliveTrees, number) {}
+  displaySinglePage(oliveTrees: any, number: number) {}
 }
