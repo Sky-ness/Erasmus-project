@@ -12,8 +12,9 @@ if (env.PORT == undefined) {
 // 					page principal
 app.get("/", app.use(express.static("client/public")));
 
+app.get("/data", app.use(express.static("database/JSON-file")));
+
 httpServer.listen(env.PORT, () => {
   console.log(`Server running at http://localhost:${env.PORT}/`);
 });
-
-console.log("wsh");
+console.log("hello");
