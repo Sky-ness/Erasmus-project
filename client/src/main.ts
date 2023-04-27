@@ -1,24 +1,31 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
 
-import { OliveTree } from "../../server/main/OliveTree";
+import OliveTree from "./model/OliveTree";
 import OliveTreeListView from "./view/OliveTreeListView";
 
 console.log("hello world");
 
-const linkApi = "";
+//--------------------------------------jeu de données-------------------------------------------
+// const linkApi = "";
+const json = "../../database/JSON file/olivesTrees.json";
 
-let oliveTree = new OliveTree("test", 1, 1, 1, 1);
+//--------------------------------------View-----------------------------------------------------
+// const mainView = new OliveTreeListView(olive, json);
+// const editView = new EditView(".olive-trees .editView", oliveTree);
+// const addView = new AddView(".olive-trees .editView");
 
-let olive = document.querySelector(".olive-trees .mainView") as HTMLElement;
-if (olive) {
-  const mainView = new OliveTreeListView(olive, linkApi);
-}
+const mainview = document.querySelector(
+  ".olive-trees .mainView"
+) as HTMLElement;
 
-/*
-const editView = new EditView(".olive-trees .editView", oliveTree);
-const addView = new AddView(".olive-trees .editView");
-*/
+let oliveTrees = [];
+fetch(json)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    // oliveTrees = data.results;
+  });
 
 /*
 function refreshData(json){

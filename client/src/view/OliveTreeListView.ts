@@ -3,17 +3,17 @@ export default class OliveTreeListView extends View {
   oliveTrees: any;
   constructor(element: HTMLElement, json: any) {
     super(element);
-    this.oliveTrees = this.refreshData(json);
+    // this.oliveTrees = this.refreshData(json);
     this.show();
   }
-  refreshData(json: any) {
-    fetch(json)
-      .then((response) => response.json())
-      .then((data) => {
-        this.oliveTrees = data.results;
-        this.displaySinglePage(this.oliveTrees, 10);
-      });
-  }
+  // refreshData(json: any) {
+  //   fetch(json)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.oliveTrees = data.results;
+  //       this.displaySinglePage(this.oliveTrees, 10);
+  //     });
+  // }
   /* Pour une api
   add(oliveTree) {
     fetch("https://mon-api.com/elements", {
