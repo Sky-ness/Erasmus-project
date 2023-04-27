@@ -1,7 +1,7 @@
-import View from "./View";
+import View from "./View.js";
 
 export default class AddView extends View {
-  constructor(element: HTMLElement) {
+  constructor(element) {
     super(element);
   }
 }

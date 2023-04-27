@@ -2,7 +2,7 @@ import path from "path";
 
 export default {
   // Fichier d'entrée :
-  entry: "./client/src/main.ts",
+  entry: "./client/src/main.js",
   // Fichier de sortie :
   output: {
     path: path.resolve(process.cwd(), "./client/public/build"),
@@ -15,21 +15,14 @@ export default {
   module: {
     rules: [
       {
-        test: /.(ts|js)$/, // tous les fichiers js ou ts ...
+        test: /\.js$/, // tous les fichiers js ...
         exclude: /node_modules/, // ... sauf le dossier node_modules ...
         use: {
-          // ... seront compilés par tsc !
-          loader: "ts-loader",
-          options: {
-            configFile: "tsconfig.client.json",
-          },
+          // ... seront compilés par babel !
+          loader: "babel-loader",
         },
       },
     ],
-  },
-  resolve: {
-    // Ajoute le support de l'extension .ts
-    extensions: [".js", ".ts"],
   },
   devtool: "source-map",
   devServer: {

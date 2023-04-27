@@ -1,7 +1,7 @@
-import View from "./View";
+import View from "./View.js";
 export default class OliveTreeListView extends View {
-  oliveTrees: any;
-  constructor(element: HTMLElement, json: any) {
+  oliveTrees;
+  constructor(element, json) {
     super(element);
     // this.oliveTrees = this.refreshData(json);
     this.show();
@@ -48,6 +48,6 @@ export default class OliveTreeListView extends View {
       .catch((error) => console.error(error));
   }
   */
-  filterForm() {}
-  displaySinglePage(oliveTrees: any, number: number) {}
+  // filterForm() {}
+  // displaySinglePage(oliveTrees, number) {}
 }

@@ -1,8 +1,8 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
 
-import OliveTree from "./model/OliveTree";
-import OliveTreeListView from "./view/OliveTreeListView";
+import OliveTree from "./model/OliveTree.js";
+import OliveTreeListView from "./view/OliveTreeListView.js";
 
 console.log("hello world");
 
@@ -15,11 +15,9 @@ const json = "/olivesTrees.json";
 // const editView = new EditView(".olive-trees .editView", oliveTree);
 // const addView = new AddView(".olive-trees .editView");
 
-const mainView = document.querySelector(
-  ".olive-trees .mainView"
-) as HTMLElement;
+const mainView = document.querySelector(".olive-trees .mainView");
 
-const addView = document.querySelector(".olive-trees .addView") as HTMLElement;
+const addView = document.querySelector(".olive-trees .addView");
 
 addView.style.display = "none";
 
