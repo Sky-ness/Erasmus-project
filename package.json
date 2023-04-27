@@ -1,36 +1,34 @@
 {
-	"name": "agar.io",
+	"name": "olives-tree-classifier",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server/main/index.js",
+	"main": "server/index.js",
 	"type": "module",
 	"scripts": {
-	  "test": "echo \"Error: no test specified\" && exit 1",
-	  "build": "webpack --mode=production",
-	  "watch": "webpack --mode=development --watch",
-	  "start": "webpack serve --mode=development",
-	  "serv": "node .",
-	  "build:server": "tsc",
-	  "dev": "node --watch ."
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack --mode=production",
+		"watch": "webpack --mode=development --watch",
+		"start": "webpack serve --mode=development",
+		"serv": "node .",
+		"dev": "node --watch ."
 	},
-	"author": "Antonin Duvauchel <antonin.duvauchel.etu@univ-lille.fr> Benoit Misplon <benoit.misplon.etu@univ-lille.fr>",
+	"author": "Antonin Duvauchel <antonin.duvauchel.etu@univ-lille.fr> Audrey Heurtaux",
 	"homepage": "https://gitlab.univ-lille.fr/js",
 	"license": "ISC",
 	"devDependencies": {
-	  "@babel/cli": "^7.20.7",
-	  "@babel/core": "^7.20.12",
-	  "@babel/preset-env": "^7.20.2",
-	  "babel-loader": "^9.1.2",
-	  "prettier": "^2.8.3",
-	  "webpack": "^5.75.0",
-	  "webpack-cli": "^5.0.1",
-	  "webpack-dev-middleware": "^6.0.2",
-	  "webpack-dev-server": "^4.11.1",
-	  "webpack-hot-middleware": "^2.25.3"
+		"@babel/cli": "^7.21.0",
+		"@babel/core": "^7.21.4",
+		"@babel/preset-env": "^7.21.4",
+		"babel-loader": "^9.1.2",
+		"prettier": "^2.8.3",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1",
+		"webpack-dev-middleware": "^6.0.2",
+		"webpack-dev-server": "^4.11.1",
+		"webpack-hot-middleware": "^2.25.3"
 	},
 	"dependencies": {
-	  "express": "^4.18.2",
-	  "jquery": "^3.6.4"
+		"express": "^4.18.2",
+		"jquery": "^3.6.4"
 	}
-  }
-  
+}

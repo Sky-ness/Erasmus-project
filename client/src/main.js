@@ -1,54 +1,54 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
 
-import OliveTree from "./model/OliveTree.js";
-import OliveTreeListView from "./view/OliveTreeListView.js";
+import OliveTree from '../../server/model/OliveTree.js';
+import OliveTreeListView from './view/OliveTreeListView.js';
 
-console.log("hello world");
+console.log('hello world');
 
 //--------------------------------------jeu de données-------------------------------------------
-// const linkApi = "";
-const json = "/olivesTrees.json";
+const linkApi = 'api/oliveTrees';
 
 //--------------------------------------View-----------------------------------------------------
 // const mainView = new OliveTreeListView(olive, json);
 // const editView = new EditView(".olive-trees .editView", oliveTree);
 // const addView = new AddView(".olive-trees .editView");
 
-const mainView = document.querySelector(".olive-trees .mainView");
+const mainView = document.querySelector('.olive-trees .mainView');
 
-const addView = document.querySelector(".olive-trees .addView");
+const addView = document.querySelector('.olive-trees .addView');
 
-addView.style.display = "none";
+addView.style.display = 'none';
 
 let oliveTrees = [];
-fetch(json)
-  .then((response) => response.json())
-  .then((data) => {
-    oliveTrees = data.results;
-    displayTrees(oliveTrees);
-  });
+fetch(linkApi)
+	.then(response => response.json())
+	.then(data => {
+		oliveTrees = data;
+		displayTrees(oliveTrees);
+	});
 
 function displayTrees(data) {
-  data.forEach((oliveTree) => {
-    mainView.innerHTML +=
-      `<p>${oliveTree.column1}<p>` +
-      `<p>${oliveTree.treeCode}<p>` +
-      `<p>${oliveTree.longitude}<p>` +
-      `<p>${oliveTree.latitude}<p>` +
-      `<p>${oliveTree.nisi}<p>` +
-      `<p>${oliveTree.perimAt1m30}<p>` +
-      `<p>${oliveTree.basePerimeter}<p>` +
-      `<p>${oliveTree.height}<p>` +
-      `<p>${oliveTree.branch}<p>` +
-      `<p>${oliveTree.numberOfBranches}<p>` +
-      `<p>${oliveTree.cavitation}<p>` +
-      `<p>${oliveTree.trunkShapes}<p>` +
-      `<p>${oliveTree.trunkTorsion}<p>` +
-      `<p>${oliveTree.landUse}<p>` +
-      `<p>${oliveTree.paratiriseis}<p>`;
-  });
+	data.forEach(oliveTree => {
+		mainView.innerHTML +=
+			`<p>${oliveTree.column1}` +
+			`${oliveTree.treeCode}` +
+			`${oliveTree.longitude}` +
+			`${oliveTree.latitude}` +
+			`${oliveTree.nisi}` +
+			`${oliveTree.perimAt1m30}` +
+			`${oliveTree.basePerimeter}` +
+			`${oliveTree.height}` +
+			`${oliveTree.branch}` +
+			`${oliveTree.numberOfBranches}` +
+			`${oliveTree.cavitation}` +
+			`${oliveTree.trunkShapes}` +
+			`${oliveTree.trunkTorsion}` +
+			`${oliveTree.landUse}` +
+			`${oliveTree.paratiriseis}</p>`;
+	});
 }
+
 /*
 function refreshData(json){
     fetch(json)
