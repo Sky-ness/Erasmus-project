@@ -206,6 +206,9 @@ nav a:hover{
     cursor: pointer;
 }
 
+.contact input:focus , .contact textarea:focus{
+    outline: none;
+}
 
 /* FOOTER */
 
