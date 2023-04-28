@@ -1,0 +1,16 @@
+.olive-trees .mainView table{
+    background-color: olive;
+    color: white;
+    border-radius: 20px;
+    margin: 50px;
+}
+.olive-trees .mainView table tr td{
+    padding: 60px;
+}
+.olive-trees .mainView table tr td a{
+    padding: 0px;
+    color: white;
+}
+.olive-trees .mainView table tr{
+    text-align: center;
+}
