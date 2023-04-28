@@ -1,9 +1,6 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
 
-import OliveTree from '../../server/model/OliveTree.js';
-import OliveTreeListView from './view/OliveTreeListView.js';
-
 console.log('hello world');
 
 //--------------------------------------jeu de données-------------------------------------------
