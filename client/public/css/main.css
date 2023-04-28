@@ -71,6 +71,11 @@ nav a:hover{
 }
 
 
+.scroll{
+    position: fixed;
+    top: 0%;
+}
+
 
 /* CAROUSEL*/
 
