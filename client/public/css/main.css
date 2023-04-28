@@ -1,0 +1,57 @@
+
+/* HEADER */
+html{
+    margin: 0;
+}
+
+
+header> .prehead{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+header img{
+    width: 15%;
+}
+header> .prehead > div{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+
+header > .prehead >div h1{
+    font-size:xx-large;
+    font-weight: bold;
+}
+
+header> nav{
+    margin-top: 0%;
+    padding-top:5% ;
+    position: fixed;
+    width: 100%;
+    background-color: brown;
+}
+
+header> nav> div{
+
+    display: flex;
+    color: black;
+    justify-content: space-around;
+}
+
+
+/* CAROUSEL*/
+
+.landscape img {
+    width: 100%;
+}
+
+
+
+
