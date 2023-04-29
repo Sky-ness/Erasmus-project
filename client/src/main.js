@@ -17,10 +17,12 @@ const addView = document.querySelector('.olive-trees .addView');
 addView.style.display = 'none';
 
 let oliveTrees = [];
-fetch(linkApi)
+fetch('api/oliveTrees?limit=10')
 	.then(response => response.json())
 	.then(data => {
-		oliveTrees = data;
+		const limitedData = data.slice(0, 5);
+		oliveTrees = limitedData;
+		console.log('olives treeee ' + oliveTrees);
 		displayLessDataTrees(oliveTrees);
 	});
 
