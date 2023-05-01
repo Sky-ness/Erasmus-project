@@ -1,5 +1,6 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
+import { doc } from 'prettier';
 import renderTreeThumbnail from './RenderTreeThumbnail.js';
 
 console.log('hello world');
@@ -15,7 +16,10 @@ const linkApi = 'api/oliveTrees';
 const mainView = document.querySelector('.olive-trees .mainView');
 const addView = document.querySelector('.olive-trees .addView');
 const searchForm = document.querySelector('.searchForm');
-addView.style.display = 'none';
+const toggleAddButton = document.querySelector('.toggleAddButton');
+const addViewForm = document.querySelector('.addViewForm');
+
+addViewForm.style.display = 'none';
 
 let oliveTrees = [];
 let oliveTreesLimited = [];
@@ -114,6 +118,20 @@ function handleSearchFormSubmit(event) {
 }
 
 searchForm.addEventListener('submit', handleSearchFormSubmit);
+
+function toggleAddForm(event) {
+	console.log('on a cliqué sur le bouton de ajouté');
+	const isOpened = addViewForm.getAttribute('style') !== 'display: none;';
+	if (!isOpened) {
+		addViewForm.setAttribute('style', '');
+		// toggleAddButton.classList.add('opened');
+	} else {
+		addViewForm.setAttribute('style', 'display: none;');
+		// toggleAddButton.classList.remove('opened');
+	}
+}
+
+toggleAddButton.addEventListener('click', toggleAddForm);
 
 /*
 function refreshData(json){
