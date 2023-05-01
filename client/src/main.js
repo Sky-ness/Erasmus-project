@@ -1,5 +1,6 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
+import renderTreeThumbnail from './RenderTreeThumbnail.js';
 
 console.log('hello world');
 
@@ -13,17 +14,19 @@ const linkApi = 'api/oliveTrees';
 
 const mainView = document.querySelector('.olive-trees .mainView');
 const addView = document.querySelector('.olive-trees .addView');
-
+const searchForm = document.querySelector('.searchForm');
 addView.style.display = 'none';
 
 let oliveTrees = [];
-fetch('api/oliveTrees?limit=10')
+let oliveTreesLimited = [];
+
+fetch('api/oliveTrees')
 	.then(response => response.json())
 	.then(data => {
-		const limitedData = data.slice(0, 5);
-		oliveTrees = limitedData;
-		console.log('olives treeee ' + oliveTrees);
-		displayLessDataTrees(oliveTrees);
+		oliveTrees = data;
+		oliveTreesLimited = data.slice(0, 5);
+		renderTreeList();
+		// displayLessDataTrees(oliveTreesLimited);
 	});
 
 function displayAllDataTrees(data) {
@@ -94,6 +97,23 @@ function displayLessDataTrees(data) {
 			</table>`;
 	});
 }
+
+function renderTreeList(search = '') {
+	let html = '';
+	oliveTrees
+		.filter(tree => tree.column1.toLowerCase().includes(search.toLowerCase()))
+		.forEach(tree => (html += renderTreeThumbnail(tree)));
+
+	document.querySelector('.olive-trees .mainView').innerHTML = html;
+}
+
+function handleSearchFormSubmit(event) {
+	event.preventDefault();
+	const searchInput = searchForm.querySelector('[name=search]');
+	renderTreeList(searchInput.value);
+}
+
+searchForm.addEventListener('submit', handleSearchFormSubmit);
 
 /*
 function refreshData(json){
