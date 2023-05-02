@@ -29,8 +29,8 @@ fetch('api/oliveTrees')
 	.then(data => {
 		oliveTrees = data;
 		oliveTreesLimited = data.slice(0, 5);
-		renderTreeList();
-		// displayLessDataTrees(oliveTreesLimited);
+		// renderTreeList();
+		displayLessDataTrees(oliveTreesLimited);
 	});
 
 function displayAllDataTrees(data) {
@@ -132,26 +132,3 @@ function toggleAddForm(event) {
 }
 
 toggleAddButton.addEventListener('click', toggleAddForm);
-
-/*
-function refreshData(json){
-    fetch(json)
-        .then(response => response.json())
-    	.then(data => olivesTree = data.results);
-}
-function splitTree(numberinOnePage){
-
-}
-function filter(){
-
-}
-function displayOliveTree(oliveTree){
-
-}
-function addOliveTree(oliveTree){
-
-}
-function editOliveTree(oliveTree) {
-  
-}
-*/

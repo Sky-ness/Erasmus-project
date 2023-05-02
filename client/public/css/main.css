@@ -1,7 +1,20 @@
 /* HEADER */
+@font-face {
+    font-family: 'TT-Fors-Trial-Light';
+    src: url('fonts/TT\ Fors\ Trial\ Light.ttf');
+  }
+  @font-face {
+    font-family: 'TT-Fors-Trial-Medium';
+    src: url('fonts/TT\ Fors\ Trial\ Medium.ttf');
+  }
+  @font-face {
+    font-family: 'TT-Fors-Trial-Regular';
+    src: url('fonts/TT\ Fors\ Trial\ Regular.ttf');
+  }
 *{
     margin:0px;
     padding: 0px;
+    font-family: 'TT-Fors-Trial-Medium',sans-serif;
 }
 
 html{
@@ -115,13 +128,44 @@ nav a:hover{
 .prof  h2{
     margin-top: -8%;
 }
+/*HEADER TREES*/
 
+.olive-trees .header{
+    display: flex;
+    text-align: right;
+    justify-content: space-between;
+    align-items: center;
+    margin: 60px;
+}
+
+.olive-trees .header .addView .toggleAddButton{
+    background-color:#9C8168;
+    color: white;
+    border-radius: 50%;
+    width : 50px;
+    height: 50px;
+    font-size: 2em;
+    margin-left: 20px;
+}
+
+.olive-trees .header .searchForm{
+    padding: 20px;
+    background-color:#9C8168;
+    border-radius: 20px;
+}
+.olive-trees .header .addView > form{
+    padding: 20px;
+    background-color:#9C8168;
+    color: white;
+    border-radius: 20px;
+}
 
 /* TREES */
 
-
 .olive-trees .mainView table{
-    background-color: olive;
+    display: flex;
+    justify-content: center;
+    background-color:#849641;
     color: white;
     border-radius: 20px;
     margin: 50px;
@@ -136,7 +180,15 @@ nav a:hover{
 .olive-trees .mainView table tr{
     text-align: center;
 }
-
+.olive-trees tr .toggleEditButton{
+    background-color:#9C8168;
+    color: white;
+    border-radius: 50%;
+    width : 50px;
+    height: 50px;
+    font-size: 2em;
+    padding: 5px;
+}
 
 /*
 
@@ -145,7 +197,7 @@ nav a:hover{
 
 .contact {
     margin-top: 2%;
-    background-color: #015e58;
+    background-color:#007A74;
     padding-bottom:5% ;
 }
 
