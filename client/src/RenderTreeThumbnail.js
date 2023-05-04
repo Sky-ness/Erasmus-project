@@ -8,7 +8,7 @@ export default function renderTreeThumbnail(tree) {
 					<th>Height</th>
 					<th><button class="toggleEditButton"><img src="images/website/pen2.ico" alt="edit"/><button></th>
 				</tr>
-				<tr>
+				<tr class=\"data\">
 					<td>${tree.column1}</td>
 					<td>X: ${tree.longitude} | Y: ${tree.latitude}</td>
 					<td>base: ${tree.basePerimeter} | at-1m30: ${tree.perimAt1m30}</td>

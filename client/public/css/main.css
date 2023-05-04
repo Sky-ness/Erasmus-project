@@ -2,26 +2,29 @@
 @font-face {
     font-family: 'TT-Fors-Trial-Light';
     src: url('fonts/TT\ Fors\ Trial\ Light.ttf');
-  }
-  @font-face {
+}
+
+@font-face {
     font-family: 'TT-Fors-Trial-Medium';
     src: url('fonts/TT\ Fors\ Trial\ Medium.ttf');
-  }
-  @font-face {
+}
+
+@font-face {
     font-family: 'TT-Fors-Trial-Regular';
     src: url('fonts/TT\ Fors\ Trial\ Regular.ttf');
-  }
-*{
-    margin:0px;
+}
+
+* {
+    margin: 0px;
     padding: 0px;
-    font-family: 'TT-Fors-Trial-Medium',sans-serif;
+    font-family: 'TT-Fors-Trial-Medium', sans-serif;
 }
 
-html{
-    scroll-behavior:3s;
+html {
+    scroll-behavior: 3s;
 }
 
-header> .prehead{
+header>.prehead {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -29,21 +32,21 @@ header> .prehead{
     justify-content: center;
 }
 
-header img{
+header img {
     width: 15%;
 }
 
-header> .prehead > div{
+header>.prehead>div {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    line-height:3em;
+    line-height: 3em;
 }
 
 
-header > .prehead >div h1{
-    font-size:xx-large;
+header>.prehead>div h1 {
+    font-size: xx-large;
     font-weight: bold;
 }
 
@@ -58,28 +61,31 @@ nav {
     position: sticky;
 }
 
-header> nav > ul {
+header>nav>ul {
     list-style: none;
-    font-size: larger;    
+    font-size: larger;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-nav a{
-    display: block;  
-    text-decoration: none; 
-    color:white;
-    border-bottom: 2px solid transparent; /*  bordure basse du bloc + couleur --> meme hauteur que hover*/
-    padding: 10px 0px; /* descendre la bordure*/
+nav a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid transparent;
+    /*  bordure basse du bloc + couleur --> meme hauteur que hover*/
+    padding: 10px 0px;
+    /* descendre la bordure*/
 }
 
-nav a:hover{
-    border-bottom: 2px solid #849641; /* bordure basse quand souris */
+nav a:hover {
+    border-bottom: 2px solid #849641;
+    /* bordure basse quand souris */
 }
 
 
-.scroll{
+.scroll {
     position: fixed;
     top: 0%;
 }
@@ -94,100 +100,126 @@ nav a:hover{
 
 /* PROF */
 
-.prof{
+.prof {
     padding-bottom: 5%;
 }
 
-.prof h1{
+.prof h1 {
     padding-top: 3%;
     padding-bottom: 1%;
     text-align: center;
-    color: black ;
+    color: black;
     font-weight: bold;
     font-size: xx-large;
 }
 
 
-.prof ul{
+.prof ul {
     display: grid;
-    grid-template-columns: 1fr  1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     row-gap: 22%;
     text-align: center;
 }
 
-.prof ul li{
+.prof ul li {
     line-height: 1.5;
     list-style: none;
 }
 
-.prof img{
+.prof img {
     text-align: center;
     width: 60%;
 }
 
-.prof  h2{
+.prof h2 {
     margin-top: -8%;
 }
+
 /*HEADER TREES*/
 
-.olive-trees .header{
+.olive-trees .header {
     display: flex;
     text-align: right;
     justify-content: space-between;
     align-items: center;
-    margin: 60px;
+    margin: 50px;
 }
 
-.olive-trees .header .addView .toggleAddButton{
-    background-color:#9C8168;
+.olive-trees .header .addView .toggleAddButton {
+    background-color: #9C8168;
     color: white;
     border-radius: 50%;
-    width : 50px;
+    width: 50px;
     height: 50px;
     font-size: 2em;
     margin-left: 20px;
 }
 
-.olive-trees .header .searchForm{
+.olive-trees .header .searchForm {
     padding: 20px;
-    background-color:#9C8168;
+    background-color: #9C8168;
     border-radius: 20px;
 }
-.olive-trees .header .addView > form{
+
+.olive-trees .header .addView>form {
     padding: 20px;
-    background-color:#9C8168;
+    background-color: #9C8168;
     color: white;
     border-radius: 20px;
 }
 
 /* TREES */
 
-.olive-trees .mainView table{
+.olive-trees .mainView table {
     display: flex;
     justify-content: center;
-    background-color:#849641;
+    background-color: #849641;
     color: white;
     border-radius: 20px;
     margin: 50px;
 }
-.olive-trees .mainView table tr td{
-    padding: 60px;
+
+.olive-trees .mainView table .data td {
+    padding: 30px;
 }
-.olive-trees .mainView table tr td a{
-    padding: 0px;
+
+.olive-trees .mainView table tr td a {
     color: white;
 }
-.olive-trees .mainView table tr{
+
+.olive-trees .mainView table tr {
     text-align: center;
 }
-.olive-trees tr .toggleEditButton{
-    background-color:#9C8168;
-    color: white;
-    border-radius: 50%;
-    width : 50px;
+
+.olive-trees tr .toggleEditButton {
+    background-color: #9C8168;
+    border-radius: 10px;
+    width: 50px;
     height: 50px;
     font-size: 2em;
     padding: 5px;
+}
+
+.olive-trees .tabButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9C8168;
+    color: white;
+    border-radius: 30px;
+    margin: 50px;
+    padding: 10px;
+}
+
+.olive-trees .tabButton button{
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.25em;
+    text-align: center;
+    margin: 10px;
 }
 
 /*
@@ -197,52 +229,52 @@ nav a:hover{
 
 .contact {
     margin-top: 2%;
-    background-color:#007A74;
-    padding-bottom:5% ;
+    background-color: #007A74;
+    padding-bottom: 5%;
 }
 
-.contact div h1{
+.contact div h1 {
     padding-right: 3%;
 }
 
-.contact > form{
-   margin-left: 22%;
-   margin-right: 22%;
+.contact>form {
+    margin-left: 22%;
+    margin-right: 22%;
 }
 
-.contact div{
+.contact div {
     padding-top: 8%;
     padding-bottom: 1%;
     text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: white ;
+    color: white;
     font-weight: bold;
     font-size: xx-large;
 }
 
 
-.contact div > input{
-    background-color: transparent; 
+.contact div>input {
+    background-color: transparent;
     border: none;
     color: white;
     padding: 12px 100px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px; 
+    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    color: white; 
+    color: white;
     border: 2px solid white;
 
 }
 
-.contact textarea{
+.contact textarea {
     background-color: transparent;
     border: 3px solid white;
-    color: white ;
+    color: white;
     width: 100%;
     height: 180px;
     margin-top: 2%;
@@ -250,7 +282,7 @@ nav a:hover{
     vertical-align: middle;
 }
 
-.contact button{
+.contact button {
     display: inherit;
     letter-spacing: 3px;
     font-size: 1.125rem;
@@ -268,19 +300,20 @@ nav a:hover{
     width: 19%;
 }
 
-.contact button:hover{
+.contact button:hover {
     background-color: transparent;
-    color:#769a5a;
+    color: #769a5a;
     cursor: pointer;
 }
 
-.contact input:focus , .contact textarea:focus{
+.contact input:focus,
+.contact textarea:focus {
     outline: none;
 }
 
 /* FOOTER */
 
-footer{
+footer {
     display: flex;
     justify-content: space-around;
     background-color: #02534d;

@@ -87,8 +87,9 @@ function displayLessDataTrees(data) {
 					<th>Perimeter</th>
 					<th>Number Of Branches</th>
 					<th>Height</th>
+					<th><button class="toggleEditButton"><img src="images/website/pen2.ico" alt="edit"/><button></th>
 				</tr>
-				<tr>
+				<tr class=\"data\">
 					<td>${oliveTree.column1}</td>
 					<td>X: ${oliveTree.longitude} | Y: ${oliveTree.latitude}</td>
 					<td>base: ${oliveTree.basePerimeter} | at-1m30: ${oliveTree.perimAt1m30}</td>
