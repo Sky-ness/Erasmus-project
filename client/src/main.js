@@ -16,10 +16,10 @@ const linkApi = 'api/oliveTrees';
 const mainView = document.querySelector('.olive-trees .mainView');
 const addView = document.querySelector('.olive-trees .addView');
 const searchForm = document.querySelector('.searchForm');
-const toggleAddButton = document.querySelector('.toggleAddButton');
 const addViewForm = document.querySelector('.addViewForm');
-
-addViewForm.style.display = 'none';
+const modal = document.querySelector('.modal');
+const toggleAddButton = document.querySelector('.toggleAddButton');
+const close = document.querySelector('.close');
 
 let oliveTrees = [];
 let oliveTreesLimited = [];
@@ -120,16 +120,18 @@ function handleSearchFormSubmit(event) {
 
 searchForm.addEventListener('submit', handleSearchFormSubmit);
 
-function toggleAddForm(event) {
-	console.log('on a cliqué sur le bouton de ajouté');
-	const isOpened = addViewForm.getAttribute('style') !== 'display: none;';
-	if (!isOpened) {
-		addViewForm.setAttribute('style', '');
-		// toggleAddButton.classList.add('opened');
-	} else {
-		addViewForm.setAttribute('style', 'display: none;');
-		// toggleAddButton.classList.remove('opened');
-	}
-}
+//ouvre le modal
+toggleAddButton.onclick = function () {
+	modal.style.display = 'block';
+};
 
-toggleAddButton.addEventListener('click', toggleAddForm);
+close.onclick = function () {
+	modal.style.display = 'none';
+};
+
+// fermer quand on clique n'importe ou ailleur
+window.onclick = function (event) {
+	if (event.target == modal) {
+		modal.style.display = 'none';
+	}
+};

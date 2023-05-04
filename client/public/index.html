@@ -63,27 +63,45 @@
 				<input type="text" name="search" placeholder="Code de l'arbre" />
 				<button type="submit">Filtrer</button>
 			</form>
-			
+
+
+
+
 			<article class="addView">
-				<div>add new tree
-					<button class="toggleAddButton"> + </button>
+
+	
+				add a new tree
+				<button class="toggleAddButton"> + </button>
+
+				<!-- The Modal -->
+				<div class="modal">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close">&times;</span>
+							<h2>Add a new tree </h2>
+						</div>
+						<div class="modal-body">
+							<form class="addViewForm">
+								<label>Code</label>
+								<input type="text" name="code" required>
+
+								<label>Name</label>
+								<input type="text" name="name" required>
+
+								<label>Trunk</label>
+								<input type="number" name="trunk" required>
+
+								<label>Height</label>
+								<input type="number" name="trunk" required>
+
+								<button type="submit"> Send </button>
+
+							</form>
+						</div>
+					</div>
+
 				</div>
-				<form class="addViewForm">
-					<label>Code</label>
-					<input type="text" name="code" required>
 
-					<label>Name</label>
-					<input type="text" name="name" required>
-
-					<label>Trunk</label>
-					<input type="number" name="trunk" required>
-
-					<label>Height</label>
-					<input type="number" name="trunk" required>
-
-					<button type="submit">Envoyer</button>
-
-				</form>
 			</article>
 		</div>
 
@@ -126,6 +144,10 @@
 		<p>Department of environment ionian island</p>
 		<p>Antonin Duvauchel - Audrey Heurtaux</p>
 	</footer>
+
+
+
+
 </body>
 
 </html>
