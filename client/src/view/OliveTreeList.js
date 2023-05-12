@@ -1,20 +1,25 @@
-import View from "./View.js";
-export default class OliveTreeListView extends View {
-  oliveTrees;
-  constructor(element, json) {
-    super(element);
-    // this.oliveTrees = this.refreshData(json);
-    this.show();
-  }
-  // refreshData(json: any) {
-  //   fetch(json)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       this.oliveTrees = data.results;
-  //       this.displaySinglePage(this.oliveTrees, 10);
-  //     });
-  // }
-  /* Pour une api
+export default class OliveTreeList {
+	oliveTrees;
+
+	constructor(api) {
+		this.oliveTrees = this.loadData(api);
+	}
+
+	async loadData(api) {
+		const response = await fetch(api);
+		const data = await response.json();
+		return data;
+	}
+	async sliceData(index) {
+		if (index == 0)
+			return this.oliveTrees.then(results => results.slice(index, 5));
+		else
+			return this.oliveTrees.then(results =>
+				results.slice(5 * index, 5 + 5 * index)
+			);
+	}
+
+	/* Pour une api
   add(oliveTree) {
     fetch("https://mon-api.com/elements", {
       method: "POST",
@@ -48,6 +53,4 @@ export default class OliveTreeListView extends View {
       .catch((error) => console.error(error));
   }
   */
-  // filterForm() {}
-  // displaySinglePage(oliveTrees, number) {}
 }

@@ -18,18 +18,6 @@ app.get('/api/oliveTrees', (req, res) => {
 	res.json(json);
 });
 
-// app.get('/api/episodes/:id', (req, res) => {
-// 	res.statusCode = 200;
-// 	const { id } = req.params;
-// 	const episodes = JSON.parse(readFileSync('database/oliveTrees.json', 'utf8'));
-// 	const episode = episodes.find(ep => ep.id === parseInt(id));
-// 	if (!episode) {
-// 		res.sendStatus(404);
-// 	} else {
-// 		res.json(episode);
-// 	}
-// });
-
 if (env.PORT == undefined) {
 	env.PORT = 8000;
 }
