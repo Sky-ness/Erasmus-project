@@ -5,36 +5,34 @@ export default class OliveTreeView extends View {
 	constructor(element) {
 		super(element);
 		this.ThumbnailGallery = document.querySelector('.mainView');
-		console.log(this.ThumbnailGallery);
-
 		this.searchForm = document.querySelector('.searchForm');
 		// this.searchForm.addEventListener('click', handleSearchFormSubmit);
 
 		this.paginationBar = document.querySelector('.tabButton');
-		this.button = this.paginationBar.querySelectorAll('button');
-	}
-	generateButton(size) {
-		let number = 0;
-		for (let i = 0; i <= size; i += 5) {
-			this.paginationBar.innerHTML += `<button>${number}</button>`;
-			number++;
-		}
 	}
 	generateData(promise) {
 		promise.then(
-			trees => (this.ThumbnailGallery.innerHTML = renderTreeList(trees))
+			results => (this.ThumbnailGallery.innerHTML = renderTreeList(results))
 		);
-
-		// this.button.forEach((indexBtn, index) => {
-		// 	indexBtn.addEventListener('click', () => {
-		// 		console.log(index);
-		// 		this.ThumbnailGallery = renderTreeList(trees);
-		// 	});
-		// });
+	}
+	generateButton(promise, treeByPage) {
+		return promise.then(results => {
+			tableButton(results, treeByPage).forEach(
+				page => (this.paginationBar.innerHTML += `<button>${page}</button>`)
+			);
+		});
 	}
 }
 function renderTreeList(trees) {
 	let html = '';
 	trees.forEach(tree => (html += renderTreeThumbnail(tree, false)));
 	return html;
+}
+function tableButton(trees, index) {
+	let table = [];
+	let number = 0;
+	for (let i = 0; i <= trees.length; i += index) {
+		table[number] = number++;
+	}
+	return table;
 }

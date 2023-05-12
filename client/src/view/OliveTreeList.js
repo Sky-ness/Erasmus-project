@@ -10,12 +10,12 @@ export default class OliveTreeList {
 		const data = await response.json();
 		return data;
 	}
-	async sliceData(index) {
+	async sliceData(index, treeByPage) {
 		if (index == 0)
-			return this.oliveTrees.then(results => results.slice(index, 5));
+			return this.oliveTrees.then(results => results.slice(index, treeByPage));
 		else
 			return this.oliveTrees.then(results =>
-				results.slice(5 * index, 5 + 5 * index)
+				results.slice(treeByPage * index, treeByPage + treeByPage * index)
 			);
 	}
 

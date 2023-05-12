@@ -43,7 +43,7 @@ export default function renderTreeThumbnail(tree, isExpanded) {
 				<td>${tree.paratiriseis}</td>
 		  	</tr>
 		 	<tr class=\"less\">
-				<button>less information</button>
+				<a>less information</a>
 		  	</tr>`) +
 		`</table>`
 	);
