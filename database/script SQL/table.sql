@@ -1,16 +1,18 @@
-DROP Table if exists oliveTrees;
-Create Table olive_trees(
+DROP Table if exists olivetrees;
+Create Table olivetrees(
     id_olives_tree text NOT NULL PRIMARY KEY,
     treeCode text,
     longitude text,
-    Nisi int,
-    Perim_at_1m30 float,
+    latitude text,
+    nisi int,
+    perim_at_1m30 float,
     base_perimeter float,
-    Height float,
+    height float,
+    branch text,
     number_of_branches int,
     cavitation int,
     trunk_shapes int,
     trunk_torsion int,
-    Land_use text,
-    Paratiriseis text
+    land_use text,
+    paratiriseis text
 );
