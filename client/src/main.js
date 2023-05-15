@@ -1,11 +1,11 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
 import OliveTreeList from './model/OliveTreeList.js';
-import WeightCriteria from './model/WeightCriteria.js';
 
 import OliveTreeView from './view/OliveTreeView.js';
 import NavigationView from './view/navigationView.js';
 import buildNav from './function/navbar.js';
+import AddView from './view/AddView.js';
 
 console.log('hello world');
 
@@ -14,11 +14,12 @@ const linkApi = 'api/oliveTrees';
 
 //--------------------------------------View-----------------------------------------------------
 const oliveTreesData = new OliveTreeList(linkApi);
-const weightCriteria = new WeightCriteria();
-const mainView = new OliveTreeView('.olive-trees');
+
 const navigationView = new NavigationView('nav');
+const mainView = new OliveTreeView('.olive-trees');
+const addView = new AddView('.modal');
 // const editView = new EditView(".olive-trees .editView", oliveTree);
-// const addView = new AddView(".olive-trees .editView");
+
 const treeByPage = 50;
 
 //------------------------------------------nav bar ----------------------------------------------

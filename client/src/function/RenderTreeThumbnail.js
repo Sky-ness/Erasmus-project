@@ -1,6 +1,5 @@
-export default function renderTreeThumbnail(tree, isExpanded) {
-	return (
-		`<table>
+export default function renderTreeThumbnail(tree) {
+	return `<table>
 		<tr>
 			<th>Primary key</th>
 			<th>Coordonate GPS</th>
@@ -15,36 +14,36 @@ export default function renderTreeThumbnail(tree, isExpanded) {
 			<td>base: ${tree.basePerimeter} | at-1m30: ${tree.perimAt1m30}</td>
 			<td>number: ${tree.numberOfBranches} | size: ${tree.branch}</td>
 			<td>${tree.height}</td>
-		</tr>` +
-		(!isExpanded
-			? `<tr class=\"more\">
-				<td colspan=\"5\"><a>more information</a></td>
-			</tr>`
-			: `<tr>
+		</tr>
+		<tr class=\"more\">
+			<td colspan=\"5\"><button>more information</button></td>
+		</tr>
+		<table class=\"expanded\">
+			<tr>
 				<th>Tree Code</th>
 				<th>Cavitation</th>
 				<th>Trunk shapes</th>
 				<th>Trunk torsion</th>
-		  	</tr>
-		  	<tr>
+			</tr>
+			<tr>
 				<td>${tree.treeCode}</td>
 				<td>${tree.cavitation}</td> 
 				<td>${tree.trunkShapes}</td> 
 				<td>${tree.trunkTorsion}</td>
-		  	</tr> 
-		  	<tr>
+			</tr> 
+			<tr>
 				<th>Nisi</th>
 				<th>Land use</th>
 				<th>Paratiriseis</th>
-		  	</tr>
-		  	<tr>
+			</tr>
+			<tr>
 				<td>${tree.nisi}</td> 
 				<td>${tree.landUse}</td> 
 				<td>${tree.paratiriseis}</td>
-		  	</tr>
-		 	<tr class=\"less\">
-				<a>less information</a>
-		  	</tr>`) +
-		`</table>`
-	);
+			</tr>
+			<tr class=\"less\">
+				<td colspan=\"5\"><button>less information</button></td>
+			</tr>
+		</table>
+	</table>`;
 }

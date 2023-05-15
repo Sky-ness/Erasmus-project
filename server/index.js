@@ -3,7 +3,6 @@ import { env } from 'node:process';
 import express from 'express';
 import { readFileSync } from 'node:fs';
 import addWebpackMiddleware from './utils/addWebpackMiddleware.js';
-import OliveTree from './model/OliveTree.js';
 
 const app = express();
 const httpServer = http.createServer(app);

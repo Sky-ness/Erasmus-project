@@ -1,10 +1,9 @@
-import View from "./View.js";
+import View from './View.js';
 
 export default class EditView extends View {
-  oliveTree;
-  constructor(element, oliveTree) {
-    super(element);
-    this.oliveTree = oliveTree;
-  }
+	oliveTree;
+	constructor(element, oliveTree) {
+		super(element);
+	}
 }
 // function PopupView(oliveTree) {}

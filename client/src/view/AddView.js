@@ -3,23 +3,14 @@ import View from './View.js';
 export default class AddView extends View {
 	constructor(element) {
 		super(element);
-		//ouvre le modal
-		toggleAddButton.onclick = function () {
-			modal.style.display = 'block';
-		};
+		this.hide();
 
-		close.onclick = function () {
-			modal.style.display = 'none';
-		};
+		this.modal = this.element.querySelector('.modal');
 
-		// fermer quand on clique n'importe ou ailleur
-		window.onclick = function (event) {
-			if (event.target == modal) {
-				modal.style.display = 'none';
-			}
-		};
-		this.modal = document.querySelector('.modal');
 		this.toggleAddButton = document.querySelector('.toggleAddButton');
-		this.close = document.querySelector('.close');
+		this.toggleAddButton.addEventListener('click', () => this.show());
+
+		this.close = this.element.querySelector('.close');
+		this.close.addEventListener('click', () => this.hide());
 	}
 }
