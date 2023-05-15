@@ -1,14 +1,12 @@
 import View from './View.js';
-import renderTreeThumbnail from '../RenderTreeThumbnail.js';
+import renderTreeThumbnail from '../function/RenderTreeThumbnail.js';
 
 export default class OliveTreeView extends View {
 	constructor(element) {
 		super(element);
-		this.ThumbnailGallery = document.querySelector('.mainView');
-		this.searchForm = document.querySelector('.searchForm');
-		// this.searchForm.addEventListener('click', handleSearchFormSubmit);
-
-		this.paginationBar = document.querySelector('.tabButton');
+		this.ThumbnailGallery = this.element.querySelector('.mainView');
+		this.searchForm = this.element.querySelector('.searchForm');
+		this.paginationBar = this.element.querySelector('.tabButton');
 	}
 	generateData(promise) {
 		promise.then(

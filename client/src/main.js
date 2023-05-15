@@ -1,8 +1,11 @@
 //import EditView from "./view/EditView.js";
 //import AddView from "./view/addView.js";
-import renderTreeThumbnail from './RenderTreeThumbnail.js';
-import OliveTreeList from './view/OliveTreeList.js';
+import OliveTreeList from './model/OliveTreeList.js';
+import WeightCriteria from './model/WeightCriteria.js';
+
 import OliveTreeView from './view/OliveTreeView.js';
+import NavigationView from './view/navigationView.js';
+import buildNav from './function/navbar.js';
 
 console.log('hello world');
 
@@ -11,31 +14,40 @@ const linkApi = 'api/oliveTrees';
 
 //--------------------------------------View-----------------------------------------------------
 const oliveTreesData = new OliveTreeList(linkApi);
+const weightCriteria = new WeightCriteria();
 const mainView = new OliveTreeView('.olive-trees');
+const navigationView = new NavigationView('nav');
 // const editView = new EditView(".olive-trees .editView", oliveTree);
 // const addView = new AddView(".olive-trees .editView");
 const treeByPage = 50;
 
+//------------------------------------------nav bar ----------------------------------------------
+buildNav(navigationView.element);
+
+//--------------------------------------main--------------------------------------------
 mainView.generateData(oliveTreesData.sliceData(0, treeByPage));
 
 mainView.generateButton(oliveTreesData.oliveTrees, treeByPage).then(() => {
 	const button = document.querySelectorAll('.tabButton button');
 	button.forEach((indexBtn, index) => {
-		indexBtn.addEventListener('click', () => {
+		indexBtn.addEventListener('click', event => {
+			event.preventDefault();
 			mainView.generateData(oliveTreesData.sliceData(index, treeByPage));
 		});
 	});
 });
 
-// function handleSearchFormSubmit(event, searchForm, trees) {
-// 	event.preventDefault();
-// 	const searchInput = searchForm.querySelector('[name=search]');
-// 	renderTreeListForm(searchInput.value, trees);
-// }
-// function renderTreeListForm(search = '', trees) {
-// 	let html = '';
-// 	trees
-// 		.filter(tree => tree.column1.toLowerCase().includes(search.toLowerCase()))
-// 		.forEach(tree => (html += renderTreeThumbnail(tree)));
-// 	return html;
-// }
+mainView.searchForm.addEventListener('click', event => {
+	event.preventDefault();
+	let searchInput = mainView.searchForm.querySelector('[name=search]');
+	mainView.generateData(oliveTreesData.filterData(searchInput.value));
+});
+
+navigationView.region.forEach(region => {
+	region.addEventListener('click', event => {
+		event.preventDefault();
+		mainView.generateData(oliveTreesData.filterData(region.innerHTML));
+	});
+});
+
+// mainView.generateData(oliveTreesData.ranking());

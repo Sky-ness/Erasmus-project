@@ -1,7 +1,7 @@
 export default class View {
 	element;
 	constructor(element) {
-		this.element = element;
+		this.element = document.querySelector(element);
 	}
 	show() {
 		this.element.style.display = 'block';
