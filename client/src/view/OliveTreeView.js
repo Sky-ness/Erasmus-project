@@ -7,28 +7,30 @@ export default class OliveTreeView extends View {
 		this.ThumbnailGallery = this.element.querySelector('.mainView');
 		this.searchForm = this.element.querySelector('.searchForm');
 		this.paginationBar = this.element.querySelector('.tabButton');
+		this.reload = this.element.querySelector('.rank');
 	}
-	generateData(promise) {
+	generateThumbnail(promise) {
 		promise.then(results => {
 			this.ThumbnailGallery.innerHTML = renderTreeList(results);
 
-			const more = this.ThumbnailGallery.querySelectorAll('.more button');
-			const less = this.ThumbnailGallery.querySelectorAll('.less button');
+			const expand = this.ThumbnailGallery.querySelectorAll('.more button');
 			const expanded = this.ThumbnailGallery.querySelectorAll('.expanded');
 
-			console.log(expanded[0].innerHTML);
 			expanded.forEach(expanded => {
 				expanded.style.display = 'none';
 			});
 
-			more.forEach((button, index) => {
+			expand.forEach((button, index) => {
+				let i = 1;
 				button.addEventListener('click', () => {
-					expanded[index].style.display = 'block';
-				});
-			});
-			less.forEach((button, index) => {
-				button.addEventListener('click', () => {
-					expanded[index].style.display = 'none';
+					if (i % 2 != 0) {
+						expand[index].innerHTML = 'less information';
+						expanded[index].style.display = 'block';
+					} else {
+						expand[index].innerHTML = 'more information';
+						expanded[index].style.display = 'none';
+					}
+					i++;
 				});
 			});
 		});

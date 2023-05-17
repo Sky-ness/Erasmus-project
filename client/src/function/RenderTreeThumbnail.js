@@ -41,9 +41,6 @@ export default function renderTreeThumbnail(tree) {
 				<td>${tree.landUse}</td> 
 				<td>${tree.paratiriseis}</td>
 			</tr>
-			<tr class=\"less\">
-				<td colspan=\"5\"><button>less information</button></td>
-			</tr>
 		</table>
 	</table>`;
 }
