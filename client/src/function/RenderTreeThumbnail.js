@@ -15,7 +15,7 @@ export default function renderTreeThumbnail(tree) {
 			<td>number: ${tree.numberOfBranches} | size: ${tree.branch}</td>
 			<td>${tree.height}</td>
 		</tr>
-		<tr class=\"more\">
+		<tr class=\"expand\">
 			<td colspan=\"5\"><button>more information</button></td>
 		</tr>
 		<table class=\"expanded\">

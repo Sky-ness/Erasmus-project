@@ -54,65 +54,56 @@
 		</ul>
 	</section>
 
-	<section class="olive-trees">
-		<div class="header">
+	<section class="viewContent">
 
-			<button class='reload'>reload</button>
-
-			<button class='rank'>rank</button>
-
-			<form class="searchForm">
-				<input type="text" name="search" placeholder="Code de l'arbre" />
-				<button type="submit">Filtrer</button>
-			</form>
-
-			<article class="addView">
-				add a new tree
-				<button class="toggleAddButton"> + </button>
-
-				<!-- The Modal -->
-				<div class="modal">
-					<div class="modal-content">
-						<div class="modal-header">
-							<span class="close">&times;</span>
-							<h2>Add a new tree </h2>
-						</div>
-						<div class="modal-body">
-							<form class="addViewForm">
-								<label>Code</label>
-								<input type="text" name="code" required>
-
-								<label>Name</label>
-								<input type="text" name="name" required>
-
-								<label>Trunk</label>
-								<input type="number" name="trunk" required>
-
-								<label>Height</label>
-								<input type="number" name="trunk" required>
-
-								<button type="submit"> Send </button>
-
-							</form>
-						</div>
-					</div>
-
+		<article class="addTree">
+			<!-- The Modal -->
+			<div class="modal">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Add a new tree </h2>
 				</div>
+				<div class="modal-body">
+					<form class="addViewForm" action="api/oliveTrees" method="post">
+						<label>Code</label>
+						<input type="text" name="code" required>
 
-			</article>
-		</div>
+						<label>Name</label>
+						<input type="text" name="name" required>
 
-		<article class="mainView">
+						<label>Trunk</label>
+						<input type="number" name="trunk" required>
 
+						<label>Height</label>
+						<input type="number" name="height" required>
+
+						<button class="create" type="submit"> Send </button>
+					</form>
+				</div>
+			</div>
 		</article>
 
-		<article class="editView">
-
+		<article class="treeList">
+			<header>
+				<form class="searchForm">
+					<input type="text" name="search" placeholder="Code de l'arbre" />
+					<select name="ordering">
+						<option value="">meilleur rendement</option>
+						<option value="-metacritic">pire rendement</option>
+					</select>
+					<button type="submit">Filtrer</button>
+				</form>
+				<div>
+					add a new tree
+					<button class="toggleAddButton"> + </button>
+				</div>
+			</header>
+			<section class="results"></section>
+			<section class="pagination"></section>
 		</article>
-
-		<article class="tabButton">
-
-		</article>
+		<article class="treeDetail"></article>
+		<article class="editTree"></article>
+		
 	</section>
 
 	<article class="contact">
