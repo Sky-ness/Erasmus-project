@@ -1,6 +1,6 @@
 import express from 'express';
 import { readFileSync } from 'node:fs';
-import getConnect from '../utils/connect.js';
+import getConnect from '../connect/connect.js';
 import bodyParser from 'body-parser';
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 	// // res.json(json);
 	// res.statusCode = 200;
 
-	client.query('SELECT * FROM commandes', (error, results) => {
+	client.query('SELECT * FROM olivetrees', (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -23,89 +23,89 @@ router.get('/', async (req, res) => {
 	});
 });
 
-router.post('/', (req, res) => {
-	console.log(req.body);
-	const { treeCode } = req.body;
-	const query = 'INSERT INTO commandes (id) VALUES ($1)';
-	const values = [treeCode];
+router.get('/:id', (req, res) => {
+	const { id } = req.params;
+	const query = 'SELECT * FROM olivetrees where id_olives_tree= $1';
+	const values = [id];
 
 	client.query(query, values, (error, results) => {
 		if (error) {
+			console.error(error);
 			throw error;
 		}
-		res.status(201).send(`User added: ${req.body.treeCode}`);
+		res.status(200).json(results.rows);
 	});
 });
 
-// router.post('/', (req, res) => {
-// 	const {
-// 		id_olives_tree,
-// 		treeCode,
-// 		longitude,
-// 		latitude,
-// 		nisi,
-// 		perim_at_1m30,
-// 		base_perimeter,
-// 		height,
-// 		branch,
-// 		number_of_branches,
-// 		cavitation,
-// 		trunk_shapes,
-// 		trunk_torsion,
-// 		land_use,
-// 		paratiriseis,
-// 	} = req.body;
+router.post('/', (req, res) => {
+	const {
+		id_olives_tree,
+		treeCode,
+		longitude,
+		latitude,
+		nisi,
+		perim_at_1m30,
+		base_perimeter,
+		height,
+		branch,
+		number_of_branches,
+		cavitation,
+		trunk_shapes,
+		trunk_torsion,
+		land_use,
+		paratiriseis,
+	} = req.body;
 
-// 	const query = `INSERT INTO olivetrees (
-// 	  id_olives_tree,
-// 	  treeCode,
-// 	  longitude,
-// 	  latitude,
-// 	  nisi,
-// 	  perim_at_1m30,
-// 	  base_perimeter,
-// 	  height,
-// 	  branch,
-// 	  number_of_branches,
-// 	  cavitation,
-// 	  trunk_shapes,
-// 	  trunk_torsion,
-// 	  land_use,
-// 	  paratiriseis
-// 	) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
+	const query = `INSERT INTO olivetrees (
+	  id_olives_tree,
+	  treeCode,
+	  longitude,
+	  latitude,
+	  nisi,
+	  perim_at_1m30,
+	  base_perimeter,
+	  height,
+	  branch,
+	  number_of_branches,
+	  cavitation,
+	  trunk_shapes,
+	  trunk_torsion,
+	  land_use,
+	  paratiriseis
+	) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
 
-// 	const values = [
-// 		id_olives_tree,
-// 		treeCode,
-// 		longitude,
-// 		latitude,
-// 		nisi,
-// 		perim_at_1m30,
-// 		base_perimeter,
-// 		height,
-// 		branch,
-// 		number_of_branches,
-// 		cavitation,
-// 		trunk_shapes,
-// 		trunk_torsion,
-// 		land_use,
-// 		paratiriseis,
-// 	];
+	const values = [
+		id_olives_tree,
+		treeCode,
+		longitude,
+		latitude,
+		nisi,
+		perim_at_1m30,
+		base_perimeter,
+		height,
+		branch,
+		number_of_branches,
+		cavitation,
+		trunk_shapes,
+		trunk_torsion,
+		land_use,
+		paratiriseis,
+	];
 
-// 	client.query(query, values, (error, results) => {
-// 		if (error) {
-// 			console.error(error);
-// 			throw error;
-// 		} else {
-// 			res.status(201).send(`Olive tree added with ID: ${id_olives_tree}`);
-// 		}
-// 	});
-// });
+	client.query(query, values, (error, results) => {
+		if (error) {
+			console.error(error);
+			throw error;
+		} else {
+			res.status(201).send(`Olive tree added with ID: ${id_olives_tree}`);
+		}
+	});
+});
 
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
 
-	const query = 'DELETE FROM commandes WHERE id = $1';
+	const query = 'DELETE FROM commandes WHERE id_olives_tree= $1';
 	const values = [id];
 
 	client.query(query, values, (error, results) => {
