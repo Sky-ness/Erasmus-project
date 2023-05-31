@@ -4,6 +4,7 @@
 import NavigationView from './view/navigationView.js';
 import AddView from './view/AddView.js';
 import TreeListView from './view/TreeListView.js';
+import EditView from './view/EditView.js';
 
 console.log('hello world');
 
