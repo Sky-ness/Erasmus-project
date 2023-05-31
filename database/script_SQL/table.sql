@@ -9,7 +9,7 @@ Create Table olivetrees(
     base_perimeter float,
     height float,
     branch text,
-    number_of_branches int,
+    number_of_branches float,
     cavitation int,
     trunk_shapes int,
     trunk_torsion int,
