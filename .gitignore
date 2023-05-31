@@ -13,3 +13,6 @@ build
 # webstorm
 .idea
 *.iml
+
+# config
+connect

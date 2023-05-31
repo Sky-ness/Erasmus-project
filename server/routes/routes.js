@@ -1,6 +1,6 @@
 import express from 'express';
 import { readFileSync } from 'node:fs';
-import getConnect from '../utils/connect.js';
+import getConnect from '../connect/connect.js';
 import bodyParser from 'body-parser';
 
 const router = express.Router();
