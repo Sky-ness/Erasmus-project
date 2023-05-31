@@ -26,11 +26,15 @@ export default class TreeListView extends View {
 		// 		search
 		// 	)}&ordering=${encodeURIComponent(ordering)}`
 		// )
-		fetch(`api/oliveTrees?search=${encodeURIComponent(search)}`)
+		fetch(
+			`api/oliveTrees?search=${encodeURIComponent(
+				search
+			)}&ordering=${encodeURIComponent(ordering)}`
+		)
 			.then(response => response.json())
 			.then(data => {
 				// rendu de la liste des olive tree
-
+				console.log(data);
 				this.paginationBar.innerHTML = '';
 
 				pagination(data, 50).forEach(page => {

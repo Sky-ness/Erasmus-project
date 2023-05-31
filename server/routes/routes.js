@@ -1,24 +1,48 @@
 import express from 'express';
 import getConnect from '../connect/connect.js';
+import OliveTree from '../model/OliveTree.js';
 
 const router = express.Router();
 const client = getConnect();
 
 router.get('/', async (req, res) => {
-	let query = 'SELECT * FROM olivetrees';
 	const { search, ordering } = req.query;
 
-	if (search) {
-		query += ` WHERE id LIKE '%${search.toUpperCase()}%'`;
-	}
-	if (ordering) {
-		query += ` order by `;
-	}
+	let query = `SELECT * FROM olivetrees WHERE id LIKE '%${search.toUpperCase()}%'`;
+
 	client.query(query, (error, results) => {
 		if (error) {
 			throw error;
 		}
-		res.status(200).json(results.rows);
+		let treeList = [];
+		results.rows.forEach((row, index) => {
+			treeList[index] = new OliveTree(
+				row.id,
+				row.treecode,
+				row.longitude,
+				row.latitude,
+				row.nisi,
+				row.perim_at_1m30,
+				row.height,
+				row.base_perimeter,
+				row.branch,
+				row.number_of_branches,
+				row.cavitation,
+				row.trunk_shapes,
+				row.trunk_torsion,
+				row.land_use,
+				row.paratiriseis
+			);
+		});
+		if (ordering === 'DESC') {
+			treeList.sort((a, b) => a.score - b.score);
+			const jsonResults = JSON.parse(JSON.stringify(treeList));
+			res.status(200).json(jsonResults);
+		} else if (ordering === 'ASC') {
+			treeList.sort((a, b) => b.score - a.score);
+			const jsonResults = JSON.parse(JSON.stringify(treeList));
+			res.status(200).json(jsonResults);
+		} else res.status(200).json(results.rows);
 	});
 });
 

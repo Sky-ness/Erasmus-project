@@ -1,51 +1,57 @@
+import Weight from './Weight.js';
+
+const weight = new Weight();
+
 export default class OliveTree {
-	column1;
-	treeCode;
+	id;
+	treecode;
 	longitude;
 	latitude;
 	nisi;
-	perimAt1m30;
-	basePerimeter;
+	perim_at_1m30;
+	base_perimeter;
 	height;
 	branch;
-	numberOfBranches;
+	number_of_branches;
 	cavitation;
-	trunkShapes;
-	trunkTorsion;
-	landUse;
+	trunk_shapes;
+	trunk_torsion;
+	land_use;
 	paratiriseis;
-
+	score;
 	constructor(
-		column1,
-		treeCode,
+		id,
+		treecode,
 		longitude,
 		latitude,
 		nisi,
-		perimAt1m30,
-		basePerimeter,
+		perim_at_1m30,
+		base_perimeter,
 		height,
 		branch,
-		numberOfBranches,
+		number_of_branches,
 		cavitation,
-		trunkShapes,
-		trunkTorsion,
-		landUse,
+		trunk_shapes,
+		trunk_torsion,
+		land_use,
 		paratiriseis
 	) {
-		this.column1 = column1;
-		this.treeCode = treeCode;
+		this.id = id;
+		this.treecode = treecode;
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.nisi = nisi;
-		this.perimAt1m30 = perimAt1m30;
-		this.basePerimeter = basePerimeter;
+		this.perim_at_1m30 = perim_at_1m30;
+		this.base_perimeter = base_perimeter;
 		this.height = height;
 		this.branch = branch;
-		this.numberOfBranches = numberOfBranches;
+		this.number_of_branches = number_of_branches;
 		this.cavitation = cavitation;
-		this.trunkShapes = trunkShapes;
-		this.trunkTorsion = trunkTorsion;
-		this.landUse = landUse;
+		this.trunk_shapes = trunk_shapes;
+		this.trunk_torsion = trunk_torsion;
+		this.land_use = land_use;
 		this.paratiriseis = paratiriseis;
+		this.score =
+			weight.base_perimeter * this.base_perimeter + weight.height * this.height;
 	}
 }
