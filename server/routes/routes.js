@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 	const { search, ordering } = req.query;
 
 	if (search) {
-		query += ` WHERE id LIKE '%${search}%'`;
+		query += ` WHERE id LIKE '%${search.toUpperCase()}%'`;
 	}
 	if (ordering) {
 		query += ` order by `;

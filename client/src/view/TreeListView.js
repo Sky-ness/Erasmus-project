@@ -26,11 +26,7 @@ export default class TreeListView extends View {
 		// 		search
 		// 	)}&ordering=${encodeURIComponent(ordering)}`
 		// )
-		fetch(
-			`api/oliveTrees?search=${encodeURIComponent(
-				search
-			)}&ordering=${encodeURIComponent(ordering)}`
-		)
+		fetch(`api/oliveTrees?search=${encodeURIComponent(search)}`)
 			.then(response => response.json())
 			.then(data => {
 				// rendu de la liste des olive tree
