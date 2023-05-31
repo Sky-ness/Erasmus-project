@@ -1,5 +1,5 @@
 INSERT INTO olivetrees(
-        id_olives_tree,
+        id,
         treeCode,
         longitude,
         latitude,
@@ -6287,7 +6287,7 @@ VALUES (
         3,
         'AC',
         NULL
-    -- ),
+    );
     -- (
     --     'LEF_10',
     --     'LEF_10',
@@ -11609,4 +11609,4 @@ VALUES (
     --     '1',
     --     '???????????'
     -- );
-    ;
+    -- ;
