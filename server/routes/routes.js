@@ -1,21 +1,20 @@
 import express from 'express';
-import { readFileSync } from 'node:fs';
 import getConnect from '../connect/connect.js';
-import bodyParser from 'body-parser';
 
 const router = express.Router();
 const client = getConnect();
 
 router.get('/', async (req, res) => {
-	// const text = await client.query('SELECT * FROM commandes');
-	// console.log(text.rows);
-	// await client.end();
+	let query = 'SELECT * FROM olivetrees';
+	const { search, ordering } = req.query;
 
-	// const json = JSON.parse(readFileSync('database/oliveTrees.json', 'utf8'));
-	// // res.json(json);
-	// res.statusCode = 200;
-
-	client.query('SELECT * FROM olivetrees', (error, results) => {
+	if (search) {
+		query += ` WHERE id LIKE '%${search}%'`;
+	}
+	if (ordering) {
+		query += ` order by `;
+	}
+	client.query(query, (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -25,15 +24,15 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', (req, res) => {
 	const { id } = req.params;
-	const query = 'SELECT * FROM olivetrees where id_olives_tree= $1';
+	const query = 'SELECT * FROM olivetrees where id= $1';
 	const values = [id];
 
-	client.query(query, values, (error, results) => {
+	client.query(query, values, (error, res) => {
 		if (error) {
 			console.error(error);
 			throw error;
 		}
-		res.status(200).json(results.rows);
+		res.status(200).json(res.rows);
 	});
 });
 
@@ -56,8 +55,10 @@ router.post('/', (req, res) => {
 		paratiriseis,
 	} = req.body;
 
+	console.log(req.body);
+
 	const query = `INSERT INTO olivetrees (
-	  id_olives_tree,
+	  id,
 	  treeCode,
 	  longitude,
 	  latitude,
