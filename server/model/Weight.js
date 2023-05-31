@@ -1,5 +1,7 @@
-class Weight {
+export default class Weight {
 	constructor() {
+		this.tangible = 0.809;
+		this.intangible = 0.191;
 		this.perimeter = 0.43;
 		this.base_perimeter = 0.065;
 		this.height = 0.03;

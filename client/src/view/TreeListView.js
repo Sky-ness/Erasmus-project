@@ -5,11 +5,14 @@ export default class TreeListView extends View {
 		super(element);
 		// détection de la soumission du formulaire de recherche
 		this.show();
+		this.results = this.element.querySelector('.results');
+
+		this.paginationBar = this.element.querySelector('.pagination');
+
 		this.searchForm = this.element.querySelector('.searchForm');
 		this.searchForm.addEventListener('submit', event =>
 			this.handleSearchFormSubmit(event)
 		);
-		this.paginationBar = this.element.querySelector('.pagination');
 	}
 
 	show() {
@@ -23,21 +26,28 @@ export default class TreeListView extends View {
 		// 		search
 		// 	)}&ordering=${encodeURIComponent(ordering)}`
 		// )
-		fetch('api/oliveTrees')
+		fetch(
+			`api/oliveTrees?search=${encodeURIComponent(
+				search
+			)}&ordering=${encodeURIComponent(ordering)}`
+		)
 			.then(response => response.json())
 			.then(data => {
 				// rendu de la liste des olive tree
 
-				paginationData(this.element, data, 0, 50);
+				this.paginationBar.innerHTML = '';
 
 				pagination(data, 50).forEach(page => {
 					this.paginationBar.innerHTML += `<button>${page}</button>`;
 				});
+
+				this.paginationData(data, 0, 50);
+
 				const button = this.paginationBar.querySelectorAll('button');
 				button.forEach((indexBtn, index) => {
 					indexBtn.addEventListener('click', event => {
 						event.preventDefault();
-						paginationData(this.element, data, index, 50);
+						this.paginationData(data, index, 50);
 					});
 				});
 			});
@@ -49,7 +59,26 @@ export default class TreeListView extends View {
 			orderingSelect = this.searchForm.querySelector('[name=ordering]');
 		this.renderTreeList(searchInput.value, orderingSelect.value);
 	}
+	paginationData(results, index, treeByPage) {
+		let html = '';
+		if (index == 0)
+			results
+				.slice(index, treeByPage)
+				.forEach(tree => (html += renderTreeThumbnail(tree)));
+		else
+			results
+				.slice(treeByPage * index, treeByPage + treeByPage * index)
+				.forEach(tree => (html += renderTreeThumbnail(tree)));
+
+		this.results.innerHTML = html;
+
+		const expand = this.results.querySelectorAll('.treeList .expand button');
+		const expanded = this.results.querySelectorAll('.treeList .expanded');
+
+		moreInformation(expand, expanded);
+	}
 }
+
 function pagination(trees, index) {
 	let table = [];
 	let number = 0;
@@ -58,28 +87,8 @@ function pagination(trees, index) {
 	}
 	return table;
 }
-function paginationData(element, results, index, treeByPage) {
-	let html = '';
-	if (index == 0)
-		results
-			.slice(index, treeByPage)
-			.forEach(tree => (html += renderTreeThumbnail(tree)));
-	else
-		results
-			.slice(treeByPage * index, treeByPage + treeByPage * index)
-			.forEach(tree => (html += renderTreeThumbnail(tree)));
 
-	element.querySelector('.results').innerHTML = html;
-
-	const expand = element
-		.querySelector('.results')
-		.querySelectorAll('.treeList .expand button');
-	const expanded = element
-		.querySelector('.results')
-		.querySelectorAll('.treeList .expanded');
-
-	console.log(expand);
-
+function moreInformation(expand, expanded) {
 	expanded.forEach(expanded => {
 		expanded.style.display = 'none';
 	});
