@@ -74,7 +74,7 @@ router.post('/', (req, res) => {
 	console.log(req.headers);
 	console.log(req.body);
 	const {
-		id_olives_tree,
+		id,
 		treeCode,
 		longitude,
 		latitude,
@@ -91,7 +91,7 @@ router.post('/', (req, res) => {
 		paratiriseis,
 	} = req.body;
 
-	console.log('id ' + id_olives_tree);
+	console.log('id ' + id);
 
 	const query = `INSERT INTO olivetrees (
 	  id,
@@ -112,7 +112,7 @@ router.post('/', (req, res) => {
 	) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
 
 	const values = [
-		id_olives_tree,
+		id,
 		treeCode,
 		longitude,
 		latitude,
