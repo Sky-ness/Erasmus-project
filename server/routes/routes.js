@@ -1,6 +1,7 @@
 import express from 'express';
 import getConnect from '../connect/connect.js';
 import OliveTree from '../model/OliveTree.js';
+import Ranking from '../model/Ranking.js';
 
 const router = express.Router();
 const client = getConnect();
@@ -34,6 +35,8 @@ router.get('/', async (req, res) => {
 				row.paratiriseis
 			);
 		});
+		const ranking = new Ranking(treeList);
+
 		if (ordering === 'DESC') {
 			treeList.sort((a, b) => a.score - b.score);
 			const jsonResults = JSON.parse(JSON.stringify(treeList));
@@ -42,7 +45,11 @@ router.get('/', async (req, res) => {
 			treeList.sort((a, b) => b.score - a.score);
 			const jsonResults = JSON.parse(JSON.stringify(treeList));
 			res.status(200).json(jsonResults);
-		} else res.status(200).json(results.rows);
+		} else {
+			console.log(ranking.idealTree);
+			console.log(ranking.worseTree);
+			res.status(200).json(results.rows);
+		}
 	});
 });
 
