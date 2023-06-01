@@ -26,17 +26,22 @@ router.get('/:id', (req, res) => {
 	const { id } = req.params;
 	const query = 'SELECT * FROM olivetrees where id= $1';
 	const values = [id];
+	console.log('id ' + id);
+	console.log('id ' + query);
 
-	client.query(query, values, (error, res) => {
+	client.query(query, values, (error, results) => {
 		if (error) {
 			console.error(error);
 			throw error;
 		}
-		res.status(200).json(res.rows);
+		res.status(200).json(results.rows);
 	});
 });
 
 router.post('/', (req, res) => {
+	res.setHeader('content-type', 'application/json');
+	console.log(req.headers);
+	console.log(req.body);
 	const {
 		id_olives_tree,
 		treeCode,
@@ -55,7 +60,7 @@ router.post('/', (req, res) => {
 		paratiriseis,
 	} = req.body;
 
-	console.log(req.body);
+	console.log('id ' + id_olives_tree);
 
 	const query = `INSERT INTO olivetrees (
 	  id,
@@ -96,9 +101,9 @@ router.post('/', (req, res) => {
 	client.query(query, values, (error, results) => {
 		if (error) {
 			console.error(error);
-			throw error;
+			res.status(500).json({ error: "Erreur lors de l'ajout de l'olivier" });
 		} else {
-			res.status(201).send(`Olive tree added with ID: ${id_olives_tree}`);
+			res.status(201).json({ message: 'Olivier ajouté avec succès' });
 		}
 	});
 });
@@ -106,7 +111,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
 
-	const query = 'DELETE FROM commandes WHERE id_olives_tree= $1';
+	const query = 'DELETE FROM olivetrees WHERE id= $1';
 	const values = [id];
 
 	client.query(query, values, (error, results) => {
@@ -119,9 +124,10 @@ router.delete('/:id', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
+	res.setHeader('content-type', 'application/json');
 	const { id } = req.params;
+	console.log(id);
 	const {
-		id_olives_tree,
 		treeCode,
 		longitude,
 		latitude,
@@ -141,26 +147,24 @@ router.patch('/:id', (req, res) => {
 	const query = `
 	  UPDATE olivetrees 
 	  SET 
-		id_olives_tree = $1,
-		treeCode = $2,
-		longitude = $3,
-		latitude = $4,
-		nisi = $5,
-		perim_at_1m30 = $6,
-		base_perimeter = $7,
-		height = $8,
-		branch = $9,
-		number_of_branches = $10,
-		cavitation = $11,
-		trunk_shapes = $12,
-		trunk_torsion = $13,
-		land_use = $14,
-		paratiriseis = $15
-	  WHERE id = $16
+		treeCode = $1,
+		longitude = $2,
+		latitude = $3,
+		nisi = $4,
+		perim_at_1m30 = $5,
+		base_perimeter = $6,
+		height = $7,
+		branch = $8,
+		number_of_branches = $9,
+		cavitation = $10,
+		trunk_shapes = $11,
+		trunk_torsion = $12,
+		land_use = $13,
+		paratiriseis = $14
+	  WHERE id = $15
 	`;
 
 	const values = [
-		id_olives_tree,
 		treeCode,
 		longitude,
 		latitude,
