@@ -9,8 +9,6 @@ const httpServer = http.createServer(app);
 
 addWebpackMiddleware(app);
 
-addWebpackMiddleware(app);
-
 // 					page principal
 app.use(express.json());
 
