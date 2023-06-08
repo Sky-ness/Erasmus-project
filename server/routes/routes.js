@@ -38,16 +38,14 @@ router.get('/', async (req, res) => {
 		const ranking = new Ranking(treeList);
 
 		if (ordering === 'DESC') {
-			treeList.sort((a, b) => a.score - b.score);
+			treeList = ranking.ordering('DESC');
 			const jsonResults = JSON.parse(JSON.stringify(treeList));
 			res.status(200).json(jsonResults);
 		} else if (ordering === 'ASC') {
-			treeList.sort((a, b) => b.score - a.score);
+			treeList = ranking.ordering('ASC');
 			const jsonResults = JSON.parse(JSON.stringify(treeList));
 			res.status(200).json(jsonResults);
 		} else {
-			console.log(ranking.idealTree);
-			console.log(ranking.worseTree);
 			res.status(200).json(results.rows);
 		}
 	});

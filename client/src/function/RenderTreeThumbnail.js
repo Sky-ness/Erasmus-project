@@ -14,6 +14,7 @@ export default function renderTreeThumbnail(tree) {
 			<td>base: ${tree.base_perimeter} | at-1m30: ${tree.perim_at_1m30}</td>
 			<td>number: ${tree.number_of_branches} | size: ${tree.branch}</td>
 			<td>${tree.height}</td>
+			<td>${tree.score}</td>
 		</tr>
 		<tr class=\"expand\">
 			<td colspan=\"5\"><button>more information</button></td>
