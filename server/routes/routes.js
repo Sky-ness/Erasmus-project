@@ -57,8 +57,6 @@ router.get('/:id', (req, res) => {
 	const { id } = req.params;
 	const query = 'SELECT * FROM olivetrees where id= $1';
 	const values = [id];
-	console.log('id ' + id);
-	console.log('id ' + query);
 
 	client.query(query, values, (error, results) => {
 		if (error) {
@@ -156,8 +154,9 @@ router.delete('/:id', (req, res) => {
 
 router.patch('/:id', (req, res) => {
 	res.setHeader('content-type', 'application/json');
+	console.log(req.headers);
+	console.log(req.body);
 	const { id } = req.params;
-	console.log(id);
 	const {
 		treeCode,
 		longitude,
