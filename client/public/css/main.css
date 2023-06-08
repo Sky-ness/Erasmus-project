@@ -161,15 +161,43 @@ nav a:hover {
     border-radius: 20px;
 }
 
-.viewContent .modal-content .addTreeForm {
-    display: flex;
-    flex-direction: column;
+.viewContent .modal-content .addTreeForm  {
+    background-color: #9C8168;
+    color: white;
+    border-radius: 20px;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.viewContent .modal-content .addTreeForm > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    row-gap: 2%;
     align-items: center;
     padding-top: 5%;
     padding-bottom: 5%;
     background-color: #9C8168;
     color: white;
     border-radius: 20px;
+}
+
+.viewContent .modal-content .addTreeForm button {
+    margin-top: 2%;
+    background-color: white;
+    color: black;
+    border-radius: 20%;
+    width: 100px;
+    height: 50px;
+    font-size:larger;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+
+
+
+.viewContent .modal-content .addTreeForm  div label {
+    margin: 2px;
 }
 
 
