@@ -3,26 +3,18 @@ import { env } from 'node:process';
 import express from 'express';
 import addWebpackMiddleware from './utils/addWebpackMiddleware.js';
 import routes from './routes/routes.js';
-import bodyParser from 'body-parser';
 
 const app = express();
 const httpServer = http.createServer(app);
 
 addWebpackMiddleware(app);
 
-const bodyparse = bodyParser;
 addWebpackMiddleware(app);
 
 // 					page principal
-// app.use(express.json());
-app.use(bodyparse.json());
-app.use(express.urlencoded({ extended: true }));
-app.get('/', app.use(express.static('client/public')));
+app.use(express.json());
 
-app.use((req, res, next) => {
-	res.setHeader('Content-Type', 'application/json');
-	next();
-});
+app.get('/', app.use(express.static('client/public')));
 
 app.use('/api/oliveTrees', routes);
 
