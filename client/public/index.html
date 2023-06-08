@@ -59,26 +59,29 @@
 		<article class="addTree">
 			<!-- The Modal -->
 			<div class="modal">
-				<div class="modal-header">
-					<span class="close">&times;</span>
-					<h2>Add a new tree </h2>
-				</div>
-				<div class="modal-body">
-					<form class="addViewForm" action="api/oliveTrees" method="post">
-						<label>Code</label>
-						<input type="text" name="code" required>
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<h2>Add a new tree </h2>
+					</div>
+					<div class="modal-body">
+						<form class="addTreeForm">
+							<label>Code</label>
+							<input type="text" name="code" required>
 
-						<label>Name</label>
-						<input type="text" name="name" required>
+							<label>Name</label>
+							<input type="text" name="name" required>
 
-						<label>Trunk</label>
-						<input type="number" name="trunk" required>
+							<label>Trunk</label>
+							<input type="number" name="trunk" required>
 
-						<label>Height</label>
-						<input type="number" name="height" required>
+							<label>Height</label>
+							<input type="number" name="trunk" required>
 
-						<button class="create" type="submit"> Send </button>
-					</form>
+							<button type="submit"> Send </button>
+
+						</form>
+					</div>
 				</div>
 			</div>
 		</article>

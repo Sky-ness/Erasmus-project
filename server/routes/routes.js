@@ -153,7 +153,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
-	res.setHeader('content-type', 'application/json');
+	res.setHeader('Content-Type', 'application/json');
 	console.log(req.headers);
 	console.log(req.body);
 	const { id } = req.params;
@@ -217,7 +217,7 @@ router.patch('/:id', (req, res) => {
 			console.error(error);
 			throw error;
 		} else {
-			res.status(200).send(`Olive tree updated with ID: ${id}`);
+			res.status(200).send(results.rows);
 		}
 	});
 });

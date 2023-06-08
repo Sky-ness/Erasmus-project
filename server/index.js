@@ -10,20 +10,19 @@ const httpServer = http.createServer(app);
 
 addWebpackMiddleware(app);
 
-// Parse JSON request body
-app.use(bodyParser.json());
+const bodyparse = bodyParser;
+addWebpackMiddleware(app);
 
-// Parse URL-encoded request body
-app.use(bodyParser.urlencoded({ extended: true }));
+// 					page principal
+// app.use(express.json());
+app.use(bodyparse.json());
+app.use(express.urlencoded({ extended: true }));
+app.get('/', app.use(express.static('client/public')));
 
 app.use((req, res, next) => {
 	res.setHeader('Content-Type', 'application/json');
 	next();
 });
-
-app.get('/', express.static('client/public'));
-
-app.use('/api/oliveTrees', routes);
 
 app.use('/api/oliveTrees', routes);
 
