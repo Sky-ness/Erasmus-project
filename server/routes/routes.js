@@ -66,12 +66,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-	res.setHeader('content-type', 'application/json');
-	console.log(req.headers);
-	console.log(req.body);
 	const {
 		id,
-		treeCode,
+		treecode,
 		longitude,
 		latitude,
 		nisi,
@@ -87,11 +84,11 @@ router.post('/', (req, res) => {
 		paratiriseis,
 	} = req.body;
 
-	console.log('id ' + id);
+	console.log(req.body);
 
 	const query = `INSERT INTO olivetrees (
 	  id,
-	  treeCode,
+	  treecode,
 	  longitude,
 	  latitude,
 	  nisi,
@@ -109,7 +106,7 @@ router.post('/', (req, res) => {
 
 	const values = [
 		id,
-		treeCode,
+		treecode,
 		longitude,
 		latitude,
 		nisi,
@@ -125,7 +122,7 @@ router.post('/', (req, res) => {
 		paratiriseis,
 	];
 
-	client.query(query, values, (error, results) => {
+	client.query(query, values, error => {
 		if (error) {
 			console.error(error);
 			res.status(500).json({ error: "Erreur lors de l'ajout de l'olivier" });
@@ -141,7 +138,7 @@ router.delete('/:id', (req, res) => {
 	const query = 'DELETE FROM olivetrees WHERE id= $1';
 	const values = [id];
 
-	client.query(query, values, (error, results) => {
+	client.query(query, values, error => {
 		if (error) {
 			console.error(error);
 			throw error;
@@ -151,12 +148,9 @@ router.delete('/:id', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
-	res.setHeader('Content-Type', 'application/json');
-	console.log(req.headers);
-	console.log(req.body);
 	const { id } = req.params;
 	const {
-		treeCode,
+		treecode,
 		longitude,
 		latitude,
 		nisi,
@@ -175,7 +169,7 @@ router.patch('/:id', (req, res) => {
 	const query = `
 	  UPDATE olivetrees 
 	  SET 
-		treeCode = $1,
+		treecode = $1,
 		longitude = $2,
 		latitude = $3,
 		nisi = $4,
@@ -193,7 +187,7 @@ router.patch('/:id', (req, res) => {
 	`;
 
 	const values = [
-		treeCode,
+		treecode,
 		longitude,
 		latitude,
 		nisi,
