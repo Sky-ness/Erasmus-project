@@ -12,10 +12,12 @@ const bodyparse = bodyParser;
 addWebpackMiddleware(app);
 
 // 					page principal
-// app.use(express.json());
 app.use(bodyparse.json());
+
 app.use(express.urlencoded({ extended: true }));
+
 app.get('/', app.use(express.static('client/public')));
+
 app.use('/api/oliveTrees', routes);
 
 if (env.PORT === undefined) {

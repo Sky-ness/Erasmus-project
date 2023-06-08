@@ -1,24 +1,4 @@
-import Weight from './Weight.js';
-
-const weight = new Weight();
-
 export default class OliveTree {
-	id;
-	treecode;
-	longitude;
-	latitude;
-	nisi;
-	perim_at_1m30;
-	base_perimeter;
-	height;
-	branch;
-	number_of_branches;
-	cavitation;
-	trunk_shapes;
-	trunk_torsion;
-	land_use;
-	paratiriseis;
-	score;
 	constructor(
 		id,
 		treecode,
@@ -51,7 +31,5 @@ export default class OliveTree {
 		this.trunk_torsion = trunk_torsion;
 		this.land_use = land_use;
 		this.paratiriseis = paratiriseis;
-		this.score =
-			weight.base_perimeter * this.base_perimeter + weight.height * this.height;
 	}
 }
