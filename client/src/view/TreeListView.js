@@ -53,6 +53,7 @@ export default class TreeListView extends View {
 			orderingSelect = this.searchForm.querySelector('[name=ordering]');
 		this.renderTreeList(searchInput.value, orderingSelect.value);
 	}
+
 	paginationData(results, index, treeByPage) {
 		let html = '';
 		if (index == 0)
@@ -66,10 +67,22 @@ export default class TreeListView extends View {
 
 		this.results.innerHTML = html;
 
+		const toggleEditButton = document.querySelector('.toggleEditButton');
+		console.log(toggleEditButton.innerHTML);
+
+		toggleEditButton.addEventListener('click', event => {
+			event.preventDefault();
+			console.log('hehe');
+			window.location.href =
+				window.location.origin + window.location.pathname + 'edit';
+		});
+
 		const expand = this.results.querySelectorAll('.treeList .expand button');
 		const expanded = this.results.querySelectorAll('.treeList .expanded');
 
 		moreInformation(expand, expanded);
+
+		console.log(toggleEditButton);
 	}
 }
 
