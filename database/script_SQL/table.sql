@@ -1,7 +1,7 @@
 DROP Table if exists olivetrees;
 Create Table olivetrees(
     id text NOT NULL PRIMARY KEY,
-    treeCode text,
+    treeCode text NOT NULL,
     longitude text,
     latitude text,
     nisi int,

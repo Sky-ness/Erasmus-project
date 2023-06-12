@@ -169,20 +169,20 @@ router.patch('/:id', (req, res) => {
 	const query = `
 	  UPDATE olivetrees 
 	  SET 
-		treecode = $1,
-		longitude = $2,
-		latitude = $3,
-		nisi = $4,
-		perim_at_1m30 = $5,
-		base_perimeter = $6,
-		height = $7,
-		branch = $8,
-		number_of_branches = $9,
-		cavitation = $10,
-		trunk_shapes = $11,
-		trunk_torsion = $12,
-		land_use = $13,
-		paratiriseis = $14
+		treecode = COALESCE($1, treecode),
+		longitude = COALESCE($2, longitude),
+		latitude = COALESCE($3, latitude),
+		nisi = COALESCE($4, nisi),
+		perim_at_1m30 = COALESCE($5, perim_at_1m30),
+		base_perimeter = COALESCE($6, base_perimeter),
+		height = COALESCE($7, height),
+		branch = COALESCE($8, branch),
+		number_of_branches = COALESCE($9, number_of_branches),
+		cavitation = COALESCE($10, cavitation),
+		trunk_shapes = COALESCE($11, trunk_shapes),
+		trunk_torsion = COALESCE($12, trunk_torsion),
+		land_use = COALESCE($13, land_use),
+		paratiriseis = COALESCE($14, paratiriseis)
 	  WHERE id = $15
 	`;
 
