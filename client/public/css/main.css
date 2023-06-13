@@ -161,7 +161,7 @@ nav a:hover {
     border-radius: 20px;
 }
 
-.viewContent .modal-content .addTreeForm  {
+.viewContent .modal-content .addTreeForm , .editTreeForm {
     background-color: #9C8168;
     color: white;
     border-radius: 20px;
@@ -169,7 +169,7 @@ nav a:hover {
     grid-template-rows: auto auto;
 }
 
-.viewContent .modal-content .addTreeForm > div {
+.viewContent .modal-content .addTreeForm > div , .viewContent .modal-content .editTreeForm > div {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
     row-gap: 2%;
@@ -181,7 +181,7 @@ nav a:hover {
     border-radius: 20px;
 }
 
-.viewContent .modal-content .addTreeForm button {
+.viewContent .modal-content .addTreeForm button, .viewContent .modal-content .editTreeForm button {
     margin-top: 2%;
     background-color: white;
     color: black;
@@ -420,6 +420,22 @@ footer {
 .modal-body {
     margin-top: 1%;
 }
+
+
+ /* last minutes  */
+ 
+.toggleDeleteButton > img{
+    width: 20%;
+    height: 20%;
+}
+
+.editTreeForm {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 
 
 

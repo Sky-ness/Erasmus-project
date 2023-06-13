@@ -73,7 +73,6 @@ export default class TreeListView extends View {
 		const expanded = this.results.querySelectorAll('.treeList .expanded');
 
 		moreInformation(expand, expanded);
-		edit(toggleEditButton);
 	}
 }
 
@@ -104,14 +103,4 @@ function moreInformation(expand, expanded) {
 			i++;
 		});
 	});
-}
-function edit(buttonList) {
-	console.log(buttonList);
-	buttonList.forEach(button =>
-		button.addEventListener('click', () => {
-			console.log('appuie');
-			window.location.href =
-				window.location.origin + window.location.pathname + 'edit';
-		})
-	);
 }

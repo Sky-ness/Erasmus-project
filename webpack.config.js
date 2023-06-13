@@ -2,13 +2,18 @@ import path from 'path';
 
 export default {
 	// Fichier d'entrée :
-	entry: './client/src/main.js',
+	entry: {
+		main: './client/src/main.js',
+		update: './client/src/update.js',
+	},
 	// Fichier de sortie :
+
 	output: {
 		path: path.resolve(process.cwd(), './client/public/build'),
-		filename: 'main.bundle.js',
+		filename: '[name].bundle.js',
 		publicPath: '/build/',
 	},
+
 	// compatibilité anciens navigateurs (si besoin du support de IE11 ou android 4.4)
 	target: ['web', 'es5'],
 	// connexion webpack <-> babel :

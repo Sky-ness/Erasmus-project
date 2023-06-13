@@ -9,4 +9,4 @@ console.log('hello world');
 const treeListView = new TreeListView('.viewContent > .treeList');
 const navigationView = new NavigationView('nav');
 const addView = new AddView('.modal');
-const editView = new EditView('.editView');
+// const editView = new EditView('.editTreeForm');
