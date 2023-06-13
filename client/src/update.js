@@ -20,7 +20,7 @@ fetch(`api/oliveTrees/${id}`)
 		form.innerHTML = `<form class="editTreeForm">
         <div>
             <label>ID</label>
-            <input type="text" name="id"  id="id" placeholder="${tree.id}" required>
+            <input type="text" name="id" id="id" value="${tree.id}" readonly class="readonly">
 
             <label>treecode</label>
             <input type="text" name="treecode" placeholder="${tree.treecode}" id="treecode" placeholder="${tree.treecode}" required>

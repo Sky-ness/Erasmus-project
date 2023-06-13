@@ -438,6 +438,10 @@ footer {
     height: 100%;
 }
 
+.readonly {
+    cursor: url("../images/website/interdiction.jpg"), not-allowed;
+}
+
 
 
 
