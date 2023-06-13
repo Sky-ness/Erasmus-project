@@ -5,6 +5,7 @@ export default {
 	entry: {
 		main: './client/src/main.js',
 		update: './client/src/update.js',
+		delete: './client/src/delete.js',
 	},
 	// Fichier de sortie :
 
