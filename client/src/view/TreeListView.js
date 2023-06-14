@@ -104,3 +104,72 @@ function moreInformation(expand, expanded) {
 		});
 	});
 }
+
+let currentPage = 1;
+
+function createPagination(currentPage, totalPages) {
+	const paginationContainer = document.getElementById('pagination-container');
+	paginationContainer.innerHTML = '';
+
+	const maxVisiblePages = 7; // Nombre maximum de boutons de pagination visibles
+
+	let startPage = 1;
+	let endPage = totalPages;
+
+	if (totalPages > maxVisiblePages) {
+		if (currentPage <= Math.ceil(maxVisiblePages / 2)) {
+			endPage = maxVisiblePages;
+		} else if (currentPage >= totalPages - Math.floor(maxVisiblePages / 2)) {
+			startPage = totalPages - maxVisiblePages + 1;
+		} else {
+			startPage = currentPage - Math.floor(maxVisiblePages / 2);
+			endPage = currentPage + Math.floor(maxVisiblePages / 2);
+		}
+	}
+
+	if (startPage > 1) {
+		createPageButton(1, '1');
+		if (startPage > 2) {
+			createEllipsis();
+		}
+	}
+
+	for (let i = startPage; i <= endPage; i++) {
+		createPageButton(i, i.toString(), i === currentPage);
+	}
+
+	if (endPage < totalPages) {
+		if (endPage < totalPages - 1) {
+			createEllipsis();
+		}
+		createPageButton(totalPages, totalPages.toString());
+	}
+}
+
+function createPageButton(pageNumber, label, isActive = false) {
+	const paginationContainer = document.getElementById('pagination-container');
+	const pageButton = document.createElement('button');
+	pageButton.innerText = label;
+
+	if (isActive) {
+		pageButton.classList.add('active');
+	}
+
+	pageButton.addEventListener('click', () => {
+		console.log('Page', pageNumber);
+		createPagination(pageNumber, totalPages);
+	});
+
+	paginationContainer.appendChild(pageButton);
+}
+
+function createEllipsis() {
+	const paginationContainer = document.getElementById('pagination-container');
+	const ellipsisSpan = document.createElement('span');
+	ellipsisSpan.innerText = '...';
+	paginationContainer.appendChild(ellipsisSpan);
+}
+
+const totalPages = 16;
+
+createPagination(currentPage, totalPages);
