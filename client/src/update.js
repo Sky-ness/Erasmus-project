@@ -23,7 +23,6 @@ form.addEventListener('submit', event => {
 	event.preventDefault();
 
 	const formData = {};
-
 	inputs.forEach(field => {
 		const fieldName = field.getAttribute('name');
 		let fieldValue = field.value;
@@ -34,7 +33,6 @@ form.addEventListener('submit', event => {
 	});
 
 	// Créer un objet avec les données du formulaire
-
 	try {
 		fetch(`api/oliveTrees/${id}`, {
 			method: 'PATCH',
