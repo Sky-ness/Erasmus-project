@@ -50,6 +50,17 @@ export default class AddView extends View {
 						'Content-Type': 'application/json',
 					},
 					body: JSON.stringify(formData),
+				}).then(response => {
+					if (response.ok) {
+						alert('Ajout effectuée avec succès');
+						window.location.href = 'index.html';
+					} else {
+						response.text().then(errorMessage => {
+							alert(
+								"Une erreur s'est produite lors de l'insertion: " + errorMessage
+							);
+						});
+					}
 				});
 			} catch (error) {
 				console.error(error);
