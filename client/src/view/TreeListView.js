@@ -21,14 +21,17 @@ export default class TreeListView extends View {
 	}
 
 	renderTreeList(search = '', ordering) {
-		fetch(
-			`api/oliveTrees?search=${encodeURIComponent(
-				search
-			)}&ordering=${encodeURIComponent(ordering)}`
-		)
+		const api =
+			!search && !ordering
+				? `api/oliveTrees`
+				: `api/oliveTrees/a/ranking?search=${encodeURIComponent(
+						search
+				  )}&ordering=${encodeURIComponent(ordering)}`;
+		fetch(api)
 			.then(response => response.json())
 			.then(data => {
 				// rendu de la liste des olive tree
+				// console.log(data);
 				this.paginationBar.innerHTML = '';
 
 				pagination(data, 50).forEach(page => {
@@ -73,7 +76,7 @@ export default class TreeListView extends View {
 		const expanded = this.results.querySelectorAll('.treeList .expanded');
 
 		moreInformation(expand, expanded);
-		edit(toggleEditButton);
+		edit(toggleEditButton, index);
 	}
 }
 
@@ -106,7 +109,6 @@ function moreInformation(expand, expanded) {
 	});
 }
 function edit(buttonList) {
-	console.log(buttonList);
 	buttonList.forEach(button =>
 		button.addEventListener('click', () => {
 			console.log('appuie');
