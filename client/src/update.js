@@ -15,6 +15,7 @@ fetch(`api/oliveTrees/${id}`)
 		const tabTree = Object.values(data);
 		for (let i = 0; i < inputs.length; i++) {
 			inputs[i].value = tabTree[i];
+			inputs[i].placeholder = tabTree[i];
 		}
 	});
 
