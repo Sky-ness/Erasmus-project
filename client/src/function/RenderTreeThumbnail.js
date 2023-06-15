@@ -7,7 +7,7 @@ export default function renderTreeThumbnail(tree) {
 			<th>Number Of Branches</th>
 			<th>Height</th>
 			<th><button class="toggleEditButton"><a href=./update.html?id=${tree.id} </a><img src="images/website/pen2.ico" alt="edit"/><button></th>
-			<th><button class="toggleDeleteButton"><a href=./delete.html?id=${tree.id} </a><img src="images/website/delete.jpeg" alt="del"/><button></th>
+			<th><button class="toggleDeleteButton"><img src="images/website/delete.ico" alt="del"/><button></th>
 			
 		</tr>
 		<tr class=\"data\">
