@@ -16,6 +16,7 @@ export class TreeDAO {
 			} else if (params.ordering === 'ASC') {
 				return ranking.ordering('ASC');
 			}
+			return result.rows;
 		} catch (error) {
 			console.log(error);
 			console.error(

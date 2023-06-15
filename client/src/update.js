@@ -12,9 +12,10 @@ const id = params.get('id');
 fetch(`api/oliveTrees/${id}`)
 	.then(response => response.json())
 	.then(data => {
-		const tree = data;
-		inputs[0].placeholder = tree.id;
-		inputs[1].placeholder = tree.id;
+		const tabTree = Object.values(data);
+		for (let i = 0; i < inputs.length; i++) {
+			inputs[i].value = tabTree[i];
+		}
 	});
 
 // Écouter l'événement de soumission du formulaire
