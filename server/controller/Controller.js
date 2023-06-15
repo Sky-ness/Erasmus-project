@@ -18,8 +18,11 @@ export class Controller {
 			const tree = await treeDao.createTree(req.body);
 			res.status(201).json(tree);
 		} catch (err) {
-			console.error(err);
-			res.status(500).json({ message: 'Error server' });
+			if (err.message === 'Duplicate tree') {
+				res.status(409).json({ message: 'Error duplicate tree' });
+			} else {
+				res.status(500).json({ message: 'Error server' });
+			}
 		}
 	}
 

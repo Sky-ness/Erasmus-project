@@ -30,7 +30,6 @@ export default class TreeListView extends View {
 		fetch(api)
 			.then(response => response.json())
 			.then(data => {
-				console.log(data);
 				// rendu de la liste des olive tree
 				this.paginationBar.innerHTML = '';
 				pagination(data, 50).forEach(page => {
