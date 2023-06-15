@@ -91,10 +91,11 @@ export default class TreeListView extends View {
 
 		this.results.innerHTML = html;
 
-		const moreButton = this.results.querySelectorAll('button');
+		const more = this.results.querySelectorAll('.more');
+		const less = this.results.querySelectorAll('.less');
 		const information = this.results.querySelectorAll('.hide');
 
-		moreInformation(moreButton, information);
+		moreInformation(more, less, information);
 	}
 	previousPage(pages) {
 		if (this.currentPage > 0) {
@@ -121,22 +122,23 @@ export default class TreeListView extends View {
 		}
 	}
 }
-function moreInformation(moreButton, information) {
-	moreButton.forEach((button, index) => {
-		let push = 1;
+function moreInformation(more, less, information) {
+	more.forEach((button, index) => {
 		button.addEventListener('click', () => {
-			if (push % 2 != 0) {
-				moreButton[index].innerHTML = 'less information';
-				for (let i = 0; i < 14; i++) {
-					information[index * 14 + i].classList.remove('hide');
-				}
-			} else {
-				moreButton[index].innerHTML = 'more information';
-				for (let i = 0; i < 14; i++) {
-					information[index * 14 + i].classList.add('hide');
-				}
+			more[index].innerHTML = '';
+			less[index].innerHTML = '<button> less information </button>';
+			for (let i = 0; i < 14; i++) {
+				information[index * 14 + i].classList.remove('hide');
 			}
-			push++;
+		});
+	});
+	less.forEach((button, index) => {
+		button.addEventListener('click', () => {
+			more[index].innerHTML = '<button> more information </button>';
+			less[index].innerHTML = '';
+			for (let i = 0; i < 14; i++) {
+				information[index * 14 + i].classList.add('hide');
+			}
 		});
 	});
 }

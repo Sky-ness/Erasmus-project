@@ -22,7 +22,7 @@ export default function renderTreeThumbnail(tree) {
 			<div class="cell"> ${tree.score} </div>
 			<div class="cell">  <a href=./delete.html?id=${tree.id}><img src="images/website/delete.ico" alt=delete/></a></div>
 
-			<div class="last-cell"> <button> more information </button> </div>
+			<div class="more"> <button> more information </button> </div>
 			
 			<div class="cell hide"> Tree Code </div>
 			<div class="cell hide"> Cavitation </div>
@@ -40,7 +40,8 @@ export default function renderTreeThumbnail(tree) {
 			<div class="cell hide"> ${tree.nisi} </div> 
 			<div class="cell hide"> ${tree.land_use} </div> 
 			<div class="cell hide"> ${tree.paratiriseis} </div>
-				
+			
+			<div class="less"> </div>
 		</div>
 	</div>`;
 }

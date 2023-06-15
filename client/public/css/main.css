@@ -239,10 +239,10 @@ h1 {
     color: #000;
 }
 
-.last-cell{
+.more,.less{
     grid-column: span 7;
 }
-.last-cell button{
+.more button,.less button{
     background-color: white;
     width: 30%;
     padding: 10px;
