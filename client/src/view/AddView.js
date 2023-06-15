@@ -25,7 +25,6 @@ export default class AddView extends View {
 		// Écouter l'événement de soumission du formulaire
 		form.addEventListener('submit', event => {
 			event.preventDefault();
-			console.log('post');
 
 			// Récupérer les valeurs du formulaire
 			const inputs = document.querySelectorAll('.addTreeForm input');
