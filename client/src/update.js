@@ -40,6 +40,17 @@ form.addEventListener('submit', event => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(formData),
+		}).then(response => {
+			if (response.ok) {
+				alert('Modification effectuée avec succès');
+				window.location.href = 'index.html';
+			} else {
+				response.text().then(errorMessage => {
+					alert(
+						"Une erreur s'est produite lors de la modification: " + errorMessage
+					);
+				});
+			}
 		});
 	} catch (error) {
 		console.error(error);

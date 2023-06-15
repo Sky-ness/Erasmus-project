@@ -104,7 +104,7 @@ nav a:hover {
     padding-bottom: 5%;
 }
 
-.prof h1 {
+h1 {
     padding-top: 3%;
     padding-bottom: 1%;
     text-align: center;
@@ -161,8 +161,8 @@ nav a:hover {
     border-radius: 20px;
 }
 
-.viewContent .modal-content .addTreeForm,
-.editTreeForm {
+
+.viewContent .modal-content .addTreeForm  {
     background-color: #9C8168;
     color: white;
     border-radius: 20px;
@@ -170,8 +170,7 @@ nav a:hover {
     grid-template-rows: auto auto;
 }
 
-.viewContent .modal-content .addTreeForm>div,
-.viewContent .modal-content .editTreeForm>div {
+.viewContent .modal-content .addTreeForm > div  {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 2%;
@@ -183,8 +182,8 @@ nav a:hover {
     border-radius: 20px;
 }
 
-.viewContent .modal-content .addTreeForm button,
-.viewContent .modal-content .editTreeForm button {
+
+.viewContent .modal-content .addTreeForm button {
     margin-top: 2%;
     background-color: white;
     color: black;
@@ -195,9 +194,6 @@ nav a:hover {
     font-weight: bold;
     margin-left: 20px;
 }
-
-
-
 
 .viewContent .modal-content .addTreeForm div label {
     margin: 2px;
@@ -452,11 +448,55 @@ footer {
     height: 100%;
 }
 
-.editTreeForm {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+/* // EDITTTT// */
+
+
+.editTreeForm   {
+    margin-left: 25%;
+    background-color: #9c8168;
+    width: 50%;
     height: 100%;
+    padding: 2%;
+}
+
+.editTreeForm > div  {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: auto auto ;
+    height: 100%;
+    padding: 2%;
+}
+
+.update button {
+    display: inherit;
+    letter-spacing: 3px;
+    font-size: 1.125rem;
+    text-align: center;
+    font-weight: 700;
+    border-style: solid;
+    margin: 32px 0 0 0;
+    padding: 16px 2px 16px 2px;
+    background-color: rgba(255, 255, 255, 0.639);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 19%;
+}
+
+.update button:hover {
+    background-color: transparent;
+    color: #769a5a;
+    cursor: pointer;
+}
+
+
+
+
+
+.viewContent .modal-content .addTreeForm  div label {
+    margin: 2px;
 }
 
 .readonly {

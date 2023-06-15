@@ -14,7 +14,6 @@ export default function renderTreeThumbnail(tree) {
 			<div class="cell"> Score </div>
 			<div class="cell"> <a href=./update.html?id=${tree.id}><img src="images/website/pen2.ico" alt=edit/></a> </div>
 			
-			
 			<div class="cell"> ${tree.id} </div>
 			<div class="cell"> X: ${tree.longitude} | Y: ${tree.latitude} </div>
 			<div class="cell"> base: ${tree.base_perimeter} | at-1m30: ${tree.perim_at_1m30} </div>
