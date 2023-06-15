@@ -234,7 +234,9 @@ h1 {
     border-radius: 20px;
     padding: 10px;
 }
-.cell:nth-child(2n) {
+
+.cell:nth-child(n+1):nth-child(-n+7),
+.cell:nth-child(n+14):nth-child(-n+22) {
     font-style: italic;
     color: #000;
 }
