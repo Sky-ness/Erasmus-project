@@ -43,7 +43,7 @@ export default class AddView extends View {
 			// Créer un objet avec les données du formulaire
 
 			try {
-				fetch('http://localhost:8000/api/oliveTrees', {
+				fetch('api/oliveTrees', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',

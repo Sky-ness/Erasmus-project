@@ -13,10 +13,14 @@ const id = params.get('id');
 console.log(id);
 
 fetch(`api/oliveTrees/${id}`)
-	.then(response => response.json())
-	.then(data => {
-		const tree = data[0];
-		console.log(data[0]);
+	.then(response => {
+		if (response.ok) {
+			return response.json();
+		} else {
+			throw new Error("Erreur lors de la récupération des données de l'arbre");
+		}
+	})
+	.then(tree => {
 		form.innerHTML = `<form class="editTreeForm">
         <div>
             <label>ID</label>
@@ -67,6 +71,9 @@ fetch(`api/oliveTrees/${id}`)
         <button type="submit"> Send </button>
 
     </form>`;
+	})
+	.catch(error => {
+		console.log(error.message);
 	});
 
 // Écouter l'événement de soumission du formulaire
@@ -97,6 +104,17 @@ form.addEventListener('submit', event => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(formData),
+		}).then(response => {
+			if (response.ok) {
+				alert('Modification effectuée avec succès');
+				window.location.href = 'index.html';
+			} else {
+				response.text().then(errorMessage => {
+					alert(
+						"Une erreur s'est produite lors de la modification: " + errorMessage
+					);
+				});
+			}
 		});
 	} catch (error) {
 		console.error(error);
