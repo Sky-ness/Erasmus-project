@@ -1,4 +1,4 @@
-import NavigationView from './view/navigationView.js';
+import NavigationView from './view/NavigationView.js';
 import AddView from './view/AddView.js';
 import TreeListView from './view/TreeListView.js';
 
