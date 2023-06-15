@@ -6,7 +6,7 @@ const client = getConnect();
 export class TreeDAO {
 	async getTreeRanked(params) {
 		try {
-			const query = `SELECT * FROM olivetrees WHERE id LIKE '%${params.search.toUpperCase()}%'`;
+			const query = `SELECT * FROM olivetrees WHERE id LIKE '%${params.search.toUpperCase()}%' order by id ASC`;
 
 			const result = await client.query(query);
 			const ranking = new Ranking(result.rows);
@@ -16,8 +16,8 @@ export class TreeDAO {
 			} else if (params.ordering === 'ASC') {
 				return ranking.ordering('ASC');
 			}
+			return result.rows;
 		} catch (error) {
-			console.log(error);
 			console.error(
 				`Erreur lors de la récupération et la classification de tout les arbres`
 			);
@@ -25,7 +25,7 @@ export class TreeDAO {
 	}
 	async getAllTrees() {
 		try {
-			const query = 'SELECT * FROM olivetrees';
+			const query = 'SELECT * FROM olivetrees order by id ASC';
 			const result = await client.query(query);
 			return result.rows;
 		} catch (error) {
@@ -131,7 +131,13 @@ export class TreeDAO {
 			const result = await client.query(query, values);
 			return result.rows[0];
 		} catch (error) {
-			console.error(`Erreur lors de la création de l'arbre`);
+			if (error.code === '23505') {
+				// Gérer l'erreur de doublon
+				throw new Error('Duplicate tree');
+			} else {
+				// Gérer d'autres erreurs
+				throw new Error('Unknown error');
+			}
 		}
 	}
 

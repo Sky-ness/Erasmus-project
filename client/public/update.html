@@ -29,7 +29,55 @@
     <section class="update">
         <h1>  Modify a tree </h1>
         
-        <form class="editTreeForm"></form>
+        <form class="editTreeForm">
+        <div>
+            <label>ID</label>
+            <input type="text" name="id" id="id" readonly class="readonly">
+
+            <label>treecode</label>
+            <input type="text" name="treecode" id="treecode" required>
+
+            <label>longitude</label>
+            <input type="text" name="longitude" id="longitude">
+
+            <label>latitude</label>
+            <input type="text" name="latitude" id="latitude">
+
+            <label>NISI</label>
+            <input type="number" name="nisi" id="nisi">
+
+            <label>perimeter at 1m30</label>
+            <input type="number" step="any" name="perim_at_1m30" id="perim_at_1m30">
+
+            <label> base perimeter</label>
+            <input type="number" step="any" name="base_perimeter" id="base_perimeter">
+
+            <label>Height</label>
+            <input type="number" step="any" name="height" id="height">
+
+            <label>branch</label>
+            <input type="number" step="any" name="branch" id="branch">
+
+            <label>number of branches</label>
+            <input type="number" name="number_of_branches" id="number_of_branches">
+
+            <label> cavitation </label>
+            <input type="number" name="cavitation" id="cavitation">
+
+            <label>trunk shapes </label>
+            <input type="number" name="trunk_shapes" id="trunk_shapes">
+
+            <label>trunk torsion </label>
+            <input type="number" name="trunk_torsion" id="trunk_torsion">
+
+            <label>land use </label>
+            <input type="text" name="land_use" id="land_use">
+
+            <label>paratiriseis </label>
+            <input type="number" name="paratiriseis" id="paratiriseis">
+        </div>
+        <button type="submit"> Send </button>
+    </form>
 
     </section>
     
