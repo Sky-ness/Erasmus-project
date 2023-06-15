@@ -6,7 +6,7 @@ export class Controller {
 	static async getTreeRanked(req, res) {
 		try {
 			const trees = await treeDao.getTreeRanked(req.query);
-			res.json(trees);
+			res.status(200).json(trees);
 		} catch (err) {
 			console.error(err);
 			res.status(500).json({ message: 'Error server' });
@@ -20,6 +20,8 @@ export class Controller {
 		} catch (err) {
 			if (err.message === 'Duplicate tree') {
 				res.status(409).json({ message: 'Error duplicate tree' });
+			} else if (err.message === 'Data validation error') {
+				res.status(422).json({ message: 'Data validation error' });
 			} else {
 				res.status(500).json({ message: 'Error server' });
 			}
@@ -40,7 +42,7 @@ export class Controller {
 		try {
 			const tree = await treeDao.getTreeById(req.params.id);
 			if (!tree) {
-				return res.status(404).json({ message: `Tree doesn't find` });
+				res.status(404).json({ message: 'Ressource not found' });
 			}
 			res.json(tree);
 		} catch (err) {
@@ -53,12 +55,16 @@ export class Controller {
 		try {
 			const tree = await treeDao.updateTree(req.params.id, req.body);
 			if (!tree) {
-				return res.status(404).json({ message: `Tree doesn't find` });
+				return res.status(404).json({ message: 'Ressource not found' });
 			}
 			res.json(tree);
 		} catch (err) {
 			console.error(err);
-			res.status(500).json({ message: 'Error server' });
+			if (err.message === 'Data validation error') {
+				res.status(422).json({ message: 'Data validation error' });
+			} else {
+				res.status(500).json({ message: 'Error server' });
+			}
 		}
 	}
 
@@ -66,9 +72,9 @@ export class Controller {
 		try {
 			const result = await treeDao.removeTree(req.params.id);
 			if (!result) {
-				return res.status(404).json({ message: `Tree doesn't find` });
+				return res.status(404).json({ message: 'Ressource not found' });
 			}
-			res.json({ message: 'Successful Tree deleted' });
+			res.status(200).json({ message: 'Successful Tree deleted' });
 		} catch (err) {
 			console.error(err);
 			res.status(500).json({ message: 'Error server' });

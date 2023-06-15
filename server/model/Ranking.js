@@ -69,7 +69,7 @@ export default class Ranking {
 			Math.pow(tree.trunk_shapes - this.worseTree.trunk_shapes, 2) +
 			Math.pow(tree.trunk_torsion - this.worseTree.trunk_torsion, 2);
 
-		return scoreIntNeg / (scoreIntPos + scoreIntNeg);
+		return parseFloat(scoreIntNeg / (scoreIntPos + scoreIntNeg)).toFixed(4);
 	}
 	ordering(order) {
 		if (order === 'DESC') {

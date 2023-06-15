@@ -1,13 +1,23 @@
 import renderTreeThumbnail from '../function/RenderTreeThumbnail.js';
 import View from './View.js';
+
+const treeByPage = 10;
+const pagesPerView = 8;
+
 export default class TreeListView extends View {
 	constructor(element) {
 		super(element);
-		// détection de la soumission du formulaire de recherche
+
 		this.show();
+
+		this.currentPage = 0;
 		this.results = this.element.querySelector('.results');
 
-		this.paginationBar = this.element.querySelector('.pagination');
+		this.pagination = this.element.querySelector('.pagination');
+		this.page = this.pagination.querySelector('.page');
+
+		this.previousButton = this.pagination.querySelector('.previous');
+		this.nextButton = this.pagination.querySelector('.next');
 
 		this.searchForm = this.element.querySelector('.searchForm');
 		this.searchForm.addEventListener('submit', event =>
@@ -31,18 +41,31 @@ export default class TreeListView extends View {
 			.then(response => response.json())
 			.then(data => {
 				// rendu de la liste des olive tree
-				this.paginationBar.innerHTML = '';
-				pagination(data, 50).forEach(page => {
-					this.paginationBar.innerHTML += `<button>${page}</button>`;
-				});
+				this.page.innerHTML = '';
 
-				this.paginationData(data, 0, 50);
+				// On génère les bouttons
+				let page = 0;
+				for (let i = 0; i <= data.length; i += treeByPage) {
+					page++;
+					this.page.innerHTML += `<button>${page}</button>`;
+				}
 
-				const button = this.paginationBar.querySelectorAll('button');
+				// On génère les données pour la première page
+				this.paginationData(data, this.currentPage, treeByPage);
+				const button = this.page.querySelectorAll('button');
+
+				// On génère les events sur les boutons > et < pour dérouller la pagination
+				this.nextButton.addEventListener('click', () => this.nextPage(button));
+				this.previousButton.addEventListener('click', () =>
+					this.previousPage(button)
+				);
+				// On affiche les bouttons nécessaire
+				this.showPage(button);
+
 				button.forEach((indexBtn, index) => {
 					indexBtn.addEventListener('click', event => {
 						event.preventDefault();
-						this.paginationData(data, index, 50);
+						this.paginationData(data, index, treeByPage);
 					});
 				});
 			});
@@ -68,109 +91,52 @@ export default class TreeListView extends View {
 
 		this.results.innerHTML = html;
 
-		const toggleEditButton = this.results.querySelectorAll('.toggleEditButton');
+		const moreButton = this.results.querySelectorAll('button');
+		const information = this.results.querySelectorAll('.hide');
 
-		const expand = this.results.querySelectorAll('.treeList .expand button');
-		const expanded = this.results.querySelectorAll('.treeList .expanded');
-
-		moreInformation(expand, expanded);
+		moreInformation(moreButton, information);
 	}
-}
-
-function pagination(trees, index) {
-	let table = [];
-	let number = 0;
-	for (let i = 0; i <= trees.length; i += index) {
-		table[number] = number++;
+	previousPage(pages) {
+		if (this.currentPage > 0) {
+			this.currentPage--;
+			this.showPage(pages);
+		}
 	}
-	return table;
-}
+	nextPage(pages) {
+		if (this.currentPage < Math.ceil(pages.length / treeByPage) - 1) {
+			this.currentPage++;
+			this.showPage(pages);
+		}
+	}
+	showPage(pages) {
+		var startIndex = this.currentPage * pagesPerView;
+		var endIndex = startIndex + pagesPerView;
 
-function moreInformation(expand, expanded) {
-	expanded.forEach(expanded => {
-		expanded.style.display = 'none';
-	});
-
-	expand.forEach((button, index) => {
-		let i = 1;
-		button.addEventListener('click', () => {
-			if (i % 2 != 0) {
-				expand[index].innerHTML = 'less information';
-				expanded[index].style.display = 'block';
+		for (var i = 0; i < pages.length; i++) {
+			if (i >= startIndex && i < endIndex) {
+				pages[i].style.display = 'inline';
 			} else {
-				expand[index].innerHTML = 'more information';
-				expanded[index].style.display = 'none';
+				pages[i].style.display = 'none';
 			}
-			i++;
+		}
+	}
+}
+function moreInformation(moreButton, information) {
+	moreButton.forEach((button, index) => {
+		let push = 1;
+		button.addEventListener('click', () => {
+			if (push % 2 != 0) {
+				moreButton[index].innerHTML = 'less information';
+				for (let i = 0; i < 14; i++) {
+					information[index * 14 + i].classList.remove('hide');
+				}
+			} else {
+				moreButton[index].innerHTML = 'more information';
+				for (let i = 0; i < 14; i++) {
+					information[index * 14 + i].classList.add('hide');
+				}
+			}
+			push++;
 		});
 	});
 }
-
-let currentPage = 1;
-
-function createPagination(currentPage, totalPages) {
-	const paginationContainer = document.getElementById('pagination-container');
-	paginationContainer.innerHTML = '';
-
-	const maxVisiblePages = 7; // Nombre maximum de boutons de pagination visibles
-
-	let startPage = 1;
-	let endPage = totalPages;
-
-	if (totalPages > maxVisiblePages) {
-		if (currentPage <= Math.ceil(maxVisiblePages / 2)) {
-			endPage = maxVisiblePages;
-		} else if (currentPage >= totalPages - Math.floor(maxVisiblePages / 2)) {
-			startPage = totalPages - maxVisiblePages + 1;
-		} else {
-			startPage = currentPage - Math.floor(maxVisiblePages / 2);
-			endPage = currentPage + Math.floor(maxVisiblePages / 2);
-		}
-	}
-
-	if (startPage > 1) {
-		createPageButton(1, '1');
-		if (startPage > 2) {
-			createEllipsis();
-		}
-	}
-
-	for (let i = startPage; i <= endPage; i++) {
-		createPageButton(i, i.toString(), i === currentPage);
-	}
-
-	if (endPage < totalPages) {
-		if (endPage < totalPages - 1) {
-			createEllipsis();
-		}
-		createPageButton(totalPages, totalPages.toString());
-	}
-}
-
-function createPageButton(pageNumber, label, isActive = false) {
-	const paginationContainer = document.getElementById('pagination-container');
-	const pageButton = document.createElement('button');
-	pageButton.innerText = label;
-
-	if (isActive) {
-		pageButton.classList.add('active');
-	}
-
-	pageButton.addEventListener('click', () => {
-		console.log('Page', pageNumber);
-		createPagination(pageNumber, totalPages);
-	});
-
-	paginationContainer.appendChild(pageButton);
-}
-
-function createEllipsis() {
-	const paginationContainer = document.getElementById('pagination-container');
-	const ellipsisSpan = document.createElement('span');
-	ellipsisSpan.innerText = '...';
-	paginationContainer.appendChild(ellipsisSpan);
-}
-
-const totalPages = 16;
-
-createPagination(currentPage, totalPages);

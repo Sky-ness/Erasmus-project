@@ -15,13 +15,6 @@ export default class AddView extends View {
 		this.close = this.element.querySelector('.close');
 		this.close.addEventListener('click', () => this.hide());
 
-		// window.addEventListener('click', event => {
-		// 	event.preventDefault();
-		// 	if (event.target == this.element) {
-		// 		this.hide();
-		// 	}
-		// });
-
 		// Écouter l'événement de soumission du formulaire
 		form.addEventListener('submit', event => {
 			event.preventDefault();

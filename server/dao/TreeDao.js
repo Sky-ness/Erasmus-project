@@ -40,7 +40,7 @@ export class TreeDAO {
 			const result = await client.query(query, values);
 			return result.rows[0];
 		} catch (error) {
-			console.error(`Erreur lors de la récupération d'un arbre`);
+			throw new Error(`Internal server error`);
 		}
 	}
 
@@ -86,7 +86,12 @@ export class TreeDAO {
 			const result = await client.query(query, values);
 			return result.rowCount == 1;
 		} catch (error) {
-			console.error(`Erreur lors de l'update de l'arbre`);
+			if (error.code === '23514') {
+				// Incorrect format
+				throw new Error('Data validation error');
+			} else {
+				throw new Error(`Internal server error`);
+			}
 		}
 	}
 
@@ -134,6 +139,9 @@ export class TreeDAO {
 			if (error.code === '23505') {
 				// Gérer l'erreur de doublon
 				throw new Error('Duplicate tree');
+			} else if (error.code === '23514') {
+				// Incorrect format
+				throw new Error('Data validation error');
 			} else {
 				// Gérer d'autres erreurs
 				throw new Error('Unknown error');
