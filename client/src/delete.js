@@ -10,11 +10,17 @@ const id = params.get('id');
 
 const results = document.querySelector('.results');
 
-fetch(`api/oliveTrees/${id}`)
-	.then(response => response.json())
-	.then(data => {
-		results.innerHTML = renderTreeThumbnail(data);
-	});
+// fetch(`api/oliveTrees/${id}`)
+// 	.then(response => response.json())
+// 	.then(data => {
+// 		results.innerHTML = renderTreeThumbnail(data);
+// 		const divs = document.querySelectorAll('div');
+// 		divs.forEach(div => {
+// 			console.log('test');
+// 			div.classList.replace('hide', 'cell');
+// 			console.log(div);
+// 		});
+// 	});
 
 function windowAlert() {
 	if (confirm('Are you sure you want to delete this tree !') == true) {
@@ -24,7 +30,7 @@ function windowAlert() {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-			});
+			}).then(() => (window.location.href = 'index.html'));
 		} catch (error) {
 			console.log(error);
 		}
