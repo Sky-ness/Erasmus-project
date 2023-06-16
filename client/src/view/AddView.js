@@ -5,9 +5,8 @@ export default class AddView extends View {
 		super(element);
 		this.hide();
 
-		// Sélectionner le formulaire
+		// Select the form
 		const form = document.querySelector('.addTreeForm');
-		// console.log('form ' + form.innerHTML);
 
 		this.toggleAddButton = document.querySelector('.toggleAddButton');
 		this.toggleAddButton.addEventListener('click', () => this.show());
@@ -15,11 +14,11 @@ export default class AddView extends View {
 		this.close = this.element.querySelector('.close');
 		this.close.addEventListener('click', () => this.hide());
 
-		// Écouter l'événement de soumission du formulaire
+		// add an event listener when you submit the form
 		form.addEventListener('submit', event => {
 			event.preventDefault();
 
-			// Récupérer les valeurs du formulaire
+			// get the values of the form
 			const inputs = document.querySelectorAll('.addTreeForm input');
 
 			const formData = {};
@@ -33,7 +32,7 @@ export default class AddView extends View {
 				formData[fieldName] = fieldValue;
 			});
 
-			// Créer un objet avec les données du formulaire
+			// create a tree with the data enter on the form
 
 			try {
 				fetch('api/oliveTrees', {
@@ -44,13 +43,11 @@ export default class AddView extends View {
 					body: JSON.stringify(formData),
 				}).then(response => {
 					if (response.ok) {
-						alert('Ajout effectuée avec succès');
+						alert('the tree was successfuly add');
 						window.location.href = 'index.html';
 					} else {
 						response.text().then(errorMessage => {
-							alert(
-								"Une erreur s'est produite lors de l'insertion: " + errorMessage
-							);
+							alert('an error has occured : ' + errorMessage);
 						});
 					}
 				});

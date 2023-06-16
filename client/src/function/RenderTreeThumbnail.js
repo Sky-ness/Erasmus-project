@@ -2,7 +2,7 @@ export default function renderTreeThumbnail(tree) {
 	return `
 	<div class="thumbnail">
 		<div>
-			<img class="tree" src="images/olives-tree-pictures/olivetree.jpeg" alt="photo"/>
+			<img class="tree" src="images/olives-tree-pictures/olivetree.jpeg" alt="picture"/>
 		</div>
 		<div class="container">
 

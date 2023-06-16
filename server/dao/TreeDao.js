@@ -4,6 +4,7 @@ import Ranking from '../model/Ranking.js';
 const client = getConnect();
 
 export class TreeDAO {
+	// This function accesses to the database and calculate a score with the Topsis algorithm and send them on a correct order (ASC or DESC) to the website
 	async getTreeRanked(params) {
 		try {
 			const query = `SELECT * FROM olivetrees WHERE id LIKE '%${params.search.toUpperCase()}%' order by id ASC`;
@@ -18,20 +19,22 @@ export class TreeDAO {
 			}
 			return result.rows;
 		} catch (error) {
-			console.error(
-				`Erreur lors de la récupération et la classification de tout les arbres`
-			);
+			//Manage other error
+			throw new Error('Internal server error');
 		}
 	}
+	// this function accesses to the database and get all the trees
 	async getAllTrees() {
 		try {
 			const query = 'SELECT * FROM olivetrees order by id ASC';
 			const result = await client.query(query);
 			return result.rows;
 		} catch (error) {
-			console.error(`Erreur lors de la récupération de tout les arbres`);
+			// Manage other error
+			throw new Error('Intenal server error');
 		}
 	}
+	// this function accesses to the database and get a tree with an id precise in parameters
 	async getTreeById(id) {
 		try {
 			const query = 'SELECT * FROM olivetrees where id= $1';
@@ -40,10 +43,11 @@ export class TreeDAO {
 			const result = await client.query(query, values);
 			return result.rows[0];
 		} catch (error) {
+			// Manage other error
 			throw new Error(`Internal server error`);
 		}
 	}
-
+	// this function accesses to the database and update data of one tree with an id and the modify data precise in parameters
 	async updateTree(id, tree) {
 		try {
 			const query = `
@@ -87,14 +91,15 @@ export class TreeDAO {
 			return result.rowCount == 1;
 		} catch (error) {
 			if (error.code === '23514') {
-				// Incorrect format
-				throw new Error('Data validation error');
+				// Manage incorrect data format
+				throw new Error('Data format error');
 			} else {
+				// Manage other error
 				throw new Error(`Internal server error`);
 			}
 		}
 	}
-
+	// this function accesses to the database and create a tree with data precise in parameter.
 	async createTree(tree) {
 		try {
 			const query = `INSERT INTO olivetrees (
@@ -137,18 +142,18 @@ export class TreeDAO {
 			return result.rows[0];
 		} catch (error) {
 			if (error.code === '23505') {
-				// Gérer l'erreur de doublon
-				throw new Error('Duplicate tree');
+				// Manage data duplicate error
+				throw new Error('Duplicate data error');
 			} else if (error.code === '23514') {
-				// Incorrect format
-				throw new Error('Data validation error');
+				// Manage incorrect data format
+				throw new Error('Data format error');
 			} else {
-				// Gérer d'autres erreurs
-				throw new Error('Unknown error');
+				// Manage other error
+				throw new Error('Internal server error');
 			}
 		}
 	}
-
+	// this function accesses to the database and remove a tree thanks to an id precise on parameters
 	async removeTree(id) {
 		try {
 			const query = 'DELETE FROM olivetrees WHERE id= $1';
@@ -156,7 +161,8 @@ export class TreeDAO {
 			await client.query(query, values);
 			return true;
 		} catch (err) {
-			console.error(`Erreur lors de la suppression de l'arbre`);
+			// Manage other error
+			throw new Error('Internal server error');
 		}
 	}
 }

@@ -14,7 +14,6 @@ const httpServer = http.createServer(app);
 
 addWebpackMiddleware(app);
 
-// 					page principal
 app.use(express.json());
 
 app.get('/', app.use(express.static('client/public')));

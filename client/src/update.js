@@ -3,10 +3,10 @@ const inputs = form.querySelectorAll('input');
 
 const url = new URL(window.location.href);
 
-// Utiliser URLSearchParams pour accéder aux paramètres de l'URL
+// Use URLSearchParams to access to the parameters
 const params = new URLSearchParams(url.search);
 
-// Récupérer la valeur du paramètre "id"
+// get the value of the id parameter
 const id = params.get('id');
 
 fetch(`api/oliveTrees/${id}`)
@@ -19,7 +19,7 @@ fetch(`api/oliveTrees/${id}`)
 		}
 	});
 
-// Écouter l'événement de soumission du formulaire
+// Add an event listener when you submit the form
 form.addEventListener('submit', event => {
 	event.preventDefault();
 
@@ -33,7 +33,7 @@ form.addEventListener('submit', event => {
 		formData[fieldName] = fieldValue;
 	});
 
-	// Créer un objet avec les données du formulaire
+	// create a tree with the form data
 	try {
 		fetch(`api/oliveTrees/${id}`, {
 			method: 'PATCH',
