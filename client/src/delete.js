@@ -28,7 +28,14 @@ function windowAlert() {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-			}).then(() => (window.location.href = 'index.html'));
+			})
+				// .then(() =>
+				// 	setTimeout(function () {
+				// 		console.log('');
+				// 		alert('well supressed tree');
+				// 	}, 2000000)
+				// )
+				.then(() => (window.location.href = 'index.html'));
 		} catch (error) {
 			console.log(error);
 		}

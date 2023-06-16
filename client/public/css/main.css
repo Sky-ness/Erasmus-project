@@ -114,24 +114,24 @@ h1 {
 }
 
 
-.prof ul {
+.professor ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 22%;
     text-align: center;
 }
 
-.prof ul li {
+.professor ul li {
     line-height: 1.5;
     list-style: none;
 }
 
-.prof img {
+.professor img {
     text-align: center;
     width: 60%;
 }
 
-.prof h2 {
+.professor h2 {
     margin-top: -8%;
 }
 
