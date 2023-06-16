@@ -6,6 +6,14 @@ const params = new URLSearchParams(url.search);
 // Get the parameter id on the search bar
 const id = params.get('id');
 
+const results = document.querySelector('.results');
+
+fetch(`api/oliveTrees/${id}`)
+	.then(response => response.json())
+	.then(data => {
+		results.innerHTML = renderTreeThumbnail(data);
+	});
+
 function windowAlert() {
 	if (confirm('Are you sure you want to delete this tree !') == true) {
 		try {

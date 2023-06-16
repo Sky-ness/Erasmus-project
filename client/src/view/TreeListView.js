@@ -1,3 +1,4 @@
+import { doc } from 'prettier';
 import renderTreeThumbnail from '../function/RenderTreeThumbnail.js';
 import View from './View.js';
 
@@ -23,6 +24,13 @@ export default class TreeListView extends View {
 		this.searchForm.addEventListener('submit', event =>
 			this.handleSearchFormSubmit(event)
 		);
+
+		this.titlesMenu = document.querySelectorAll('.nav-link');
+		this.titlesMenu.forEach(title => {
+			title.addEventListener('click', () => {
+				this.renderTreeList(title.name, '');
+			});
+		});
 	}
 
 	show() {
@@ -45,9 +53,12 @@ export default class TreeListView extends View {
 
 				// generate pagination button
 				let page = 0;
+
 				for (let i = 0; i <= data.length; i += treeByPage) {
+					page === 0
+						? (this.page.innerHTML += `<button class="active"> 1 </button>`)
+						: (this.page.innerHTML += `<button>${page + 1}</button>`);
 					page++;
-					this.page.innerHTML += `<button>${page}</button>`;
 				}
 
 				// Generate data of the first page
@@ -65,6 +76,12 @@ export default class TreeListView extends View {
 				button.forEach((indexBtn, index) => {
 					indexBtn.addEventListener('click', event => {
 						event.preventDefault();
+						const current = document.querySelector('.active');
+						current.classList.remove('active');
+						indexBtn.classList.add('active');
+
+						console.log(current);
+
 						this.paginationData(data, index, treeByPage);
 					});
 				});

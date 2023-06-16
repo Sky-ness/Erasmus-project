@@ -214,8 +214,8 @@ h1 {
 }
 
 .results .thumbnail .tree{
-    width: 70%;
-    height: 90%;
+    width:250px;
+    height: 250px;
     padding: 15px;
     border-radius: 50%;
 
@@ -276,6 +276,14 @@ h1 {
     text-align: center;
     margin: 10px;
 }
+
+.viewContent .treeList .pagination  .active {
+    background-color: #9c8168;
+    color: white;
+    
+}
+
+
 
 /*
 
