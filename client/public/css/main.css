@@ -100,7 +100,7 @@ nav a:hover {
 
 /* PROF */
 
-.prof {
+.professor {
     padding-bottom: 5%;
 }
 
@@ -510,7 +510,7 @@ footer {
 }
 
 .readonly {
-    cursor: url("../images/website/interdiction.jpg"), not-allowed;
+    cursor: url("../images/website/forbidden.png"), not-allowed;
 }
 
 

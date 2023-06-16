@@ -1,11 +1,9 @@
-import renderTreeThumbnail from './function/RenderTreeThumbnail.js';
-
 const url = new URL(window.location.href);
 
-// Utiliser URLSearchParams pour accéder aux paramètres de l'URL
+// Use URLSearchParams to access to the parameters
 const params = new URLSearchParams(url.search);
 
-// Récupérer la valeur du paramètre "id"
+// Get the parameter id on the search bar
 const id = params.get('id');
 
 const results = document.querySelector('.results');

@@ -38,6 +38,7 @@ export default class TreeListView extends View {
 		this.renderTreeList();
 	}
 
+	// renderList of the olive trees
 	renderTreeList(search = '', ordering) {
 		const api =
 			!search && !ordering
@@ -48,10 +49,9 @@ export default class TreeListView extends View {
 		fetch(api)
 			.then(response => response.json())
 			.then(data => {
-				// rendu de la liste des olive tree
 				this.page.innerHTML = '';
 
-				// On génère les bouttons
+				// generate pagination button
 				let page = 0;
 
 				for (let i = 0; i <= data.length; i += treeByPage) {
@@ -61,16 +61,16 @@ export default class TreeListView extends View {
 					page++;
 				}
 
-				// On génère les données pour la première page
+				// Generate data of the first page
 				this.paginationData(data, this.currentPage, treeByPage);
 				const button = this.page.querySelectorAll('button');
 
-				// On génère les events sur les boutons > et < pour dérouller la pagination
+				// Generate event of the next and previous button to see the other page
 				this.nextButton.addEventListener('click', () => this.nextPage(button));
 				this.previousButton.addEventListener('click', () =>
 					this.previousPage(button)
 				);
-				// On affiche les bouttons nécessaire
+				// display the buttons
 				this.showPage(button);
 
 				button.forEach((indexBtn, index) => {
