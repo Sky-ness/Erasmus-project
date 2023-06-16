@@ -8,6 +8,14 @@ const params = new URLSearchParams(url.search);
 // Récupérer la valeur du paramètre "id"
 const id = params.get('id');
 
+const results = document.querySelector('.results');
+
+fetch(`api/oliveTrees/${id}`)
+	.then(response => response.json())
+	.then(data => {
+		results.innerHTML = renderTreeThumbnail(data);
+	});
+
 function windowAlert() {
 	if (confirm('Are you sure you want to delete this tree !') == true) {
 		try {
@@ -20,8 +28,6 @@ function windowAlert() {
 		} catch (error) {
 			console.log(error);
 		}
-
-		// Code à exécuter en cas d'erreur de requête
 	} else {
 		window.location.href = 'index.html';
 	}

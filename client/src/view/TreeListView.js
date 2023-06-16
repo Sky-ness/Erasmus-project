@@ -45,9 +45,12 @@ export default class TreeListView extends View {
 
 				// On génère les bouttons
 				let page = 0;
+
 				for (let i = 0; i <= data.length; i += treeByPage) {
+					page === 0
+						? (this.page.innerHTML += `<button class="active"> 1 </button>`)
+						: (this.page.innerHTML += `<button>${page + 1}</button>`);
 					page++;
-					this.page.innerHTML += `<button>${page}</button>`;
 				}
 
 				// On génère les données pour la première page
@@ -65,6 +68,12 @@ export default class TreeListView extends View {
 				button.forEach((indexBtn, index) => {
 					indexBtn.addEventListener('click', event => {
 						event.preventDefault();
+						const current = document.querySelector('.active');
+						current.classList.remove('active');
+						indexBtn.classList.add('active');
+
+						console.log(current);
+
 						this.paginationData(data, index, treeByPage);
 					});
 				});
