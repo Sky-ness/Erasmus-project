@@ -162,7 +162,7 @@ h1 {
 }
 
 
-.viewContent .modal-content .addTreeForm  {
+.viewContent .modal-content .addTreeForm {
     background-color: #9C8168;
     color: white;
     border-radius: 20px;
@@ -170,9 +170,11 @@ h1 {
     grid-template-rows: auto auto;
 }
 
-.viewContent .modal-content .addTreeForm > div  {
+.viewContent .modal-content .addTreeForm>div {
+    padding: 2%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    column-gap: 2%;
     row-gap: 2%;
     align-items: center;
     padding-top: 5%;
@@ -203,23 +205,24 @@ h1 {
 
 /* TREES */
 
-.results .thumbnail{
+.results .thumbnail {
     display: grid;
     background-color: #769a5a;
     border-radius: 30px;
     grid-template-columns: 1fr 5fr;
     text-align: center;
     margin: 20px;
-    gap : 10px;
+    gap: 10px;
 }
 
-.results .thumbnail .tree{
-    width:250px;
+.results .thumbnail .tree {
+    width: 250px;
     height: 250px;
     padding: 15px;
     border-radius: 50%;
 
 }
+
 .container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -241,17 +244,20 @@ h1 {
     color: #000;
 }
 
-.more,.less{
+.more,
+.less {
     grid-column: span 7;
 }
-.more button,.less button{
+
+.more button,
+.less button {
     background-color: white;
     width: 30%;
     padding: 10px;
     border-radius: 30px;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
@@ -277,10 +283,10 @@ h1 {
     margin: 10px;
 }
 
-.viewContent .treeList .pagination  .active {
+.viewContent .treeList .pagination .active {
     background-color: #9c8168;
     color: white;
-    
+
 }
 
 
@@ -382,27 +388,21 @@ footer {
     background-color: #02534d;
 }
 
+
+/* POPUP */
+
 .modal {
+    margin-bottom: 10%;
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+    background-color: rgba(0, 0, 1, 0.7);
     -webkit-animation-name: fadeIn;
-    /* Fade in the background */
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
     animation-duration: 0.4s
@@ -411,8 +411,9 @@ footer {
 /* Modal Content */
 .modal-content {
     position: fixed;
-    top: 25%;
+    top: 20%;
     margin-left: 5%;
+    margin-bottom: 5%;
     background-color: transparent;
     width: 85%;
     -webkit-animation-name: slideIn;
@@ -443,7 +444,7 @@ footer {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .modal-body {
@@ -451,17 +452,10 @@ footer {
 }
 
 
-/* last minutes  */
-
-.toggleDeleteButton img {
-    width: 100%;
-    height: 100%;
-}
-
 /* // EDITTTT// */
 
 
-.editTreeForm   {
+.editTreeForm {
     margin-left: 25%;
     background-color: #9c8168;
     width: 50%;
@@ -469,10 +463,10 @@ footer {
     padding: 2%;
 }
 
-.editTreeForm > div  {
+.editTreeForm>div {
     margin-top: 2%;
     display: grid;
-    grid-template-columns: auto auto ;
+    grid-template-columns: auto auto;
     height: 100%;
     padding: 2%;
 }
@@ -505,7 +499,7 @@ footer {
 
 
 
-.viewContent .modal-content .addTreeForm  div label {
+.viewContent .modal-content .addTreeForm div label {
     margin: 2px;
 }
 
