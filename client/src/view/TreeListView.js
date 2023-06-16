@@ -1,3 +1,4 @@
+import { doc } from 'prettier';
 import renderTreeThumbnail from '../function/RenderTreeThumbnail.js';
 import View from './View.js';
 
@@ -23,6 +24,13 @@ export default class TreeListView extends View {
 		this.searchForm.addEventListener('submit', event =>
 			this.handleSearchFormSubmit(event)
 		);
+
+		this.titlesMenu = document.querySelectorAll('.nav-link');
+		this.titlesMenu.forEach(title => {
+			title.addEventListener('click', () => {
+				this.renderTreeList(title.name, '');
+			});
+		});
 	}
 
 	show() {

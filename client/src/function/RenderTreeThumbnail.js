@@ -1,4 +1,5 @@
 export default function renderTreeThumbnail(tree) {
+	const score = tree.score !== undefined ? tree.score : ' - - - ';
 	return `
 	<div class="thumbnail">
 		<div>
@@ -19,7 +20,7 @@ export default function renderTreeThumbnail(tree) {
 			<div class="cell"> base: ${tree.base_perimeter} | at-1m30: ${tree.perim_at_1m30} </div>
 			<div class="cell"> number: ${tree.number_of_branches} | size: ${tree.branch} </div>
 			<div class="cell"> ${tree.height} </div>
-			<div class="cell"> ${tree.score} </div>
+			<div class="cell"> ${score} </div>
 			<div class="cell">  <a href=./delete.html?id=${tree.id}><img src="images/website/delete.ico" alt=delete/></a></div>
 
 			<div class="more"> <button> more information </button> </div>
