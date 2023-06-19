@@ -7,7 +7,7 @@ export class TreeDAO {
 	// This function accesses to the database and calculate a score with the Topsis algorithm and send them on a correct order (ASC or DESC) to the website
 	async getTreeRanked(params) {
 		try {
-			const query = `SELECT * FROM olivetrees WHERE id LIKE '%${params.search.toUpperCase()}%' order by id ASC`;
+			const query = `SELECT * FROM olivetrees WHERE id LIKE '%${params.search.toUpperCase()}%' ORDER BY CAST(regexp_replace(id, '[^0-9]', '', 'g') AS INTEGER), id`;
 
 			const result = await client.query(query);
 			const ranking = new Ranking(result.rows);
@@ -26,7 +26,7 @@ export class TreeDAO {
 	// this function accesses to the database and get all the trees
 	async getAllTrees() {
 		try {
-			const query = 'SELECT * FROM olivetrees order by id ASC';
+			const query = `SELECT * FROM olivetrees ORDER BY CAST(regexp_replace(id, '[^0-9]', '', 'g') AS INTEGER), id`;
 			const result = await client.query(query);
 			return result.rows;
 		} catch (error) {

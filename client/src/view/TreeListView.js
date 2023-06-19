@@ -1,9 +1,8 @@
-import { doc } from 'prettier';
 import renderTreeThumbnail from '../function/RenderTreeThumbnail.js';
 import View from './View.js';
 
 const treeByPage = 10;
-const pagesPerView = 8;
+const pagesPerView = 10;
 
 export default class TreeListView extends View {
 	constructor(element) {
@@ -49,6 +48,8 @@ export default class TreeListView extends View {
 		fetch(api)
 			.then(response => response.json())
 			.then(data => {
+				this.currentPage = 0;
+
 				this.page.innerHTML = '';
 
 				// generate pagination button
@@ -62,14 +63,14 @@ export default class TreeListView extends View {
 				}
 
 				// Generate data of the first page
-				this.paginationData(data, this.currentPage, treeByPage);
+				this.data(data, this.currentPage, treeByPage);
+
 				const button = this.page.querySelectorAll('button');
 
 				// Generate event of the next and previous button to see the other page
-				this.nextButton.addEventListener('click', () => this.nextPage(button));
-				this.previousButton.addEventListener('click', () =>
-					this.previousPage(button)
-				);
+				this.nextButton.onclick = () => this.nextPage(button);
+				this.previousButton.onclick = () => this.previousPage(button);
+
 				// display the buttons
 				this.showPage(button);
 
@@ -80,9 +81,7 @@ export default class TreeListView extends View {
 						current.classList.remove('active');
 						indexBtn.classList.add('active');
 
-						console.log(current);
-
-						this.paginationData(data, index, treeByPage);
+						this.data(data, index, treeByPage);
 					});
 				});
 			});
@@ -95,7 +94,7 @@ export default class TreeListView extends View {
 		this.renderTreeList(searchInput.value, orderingSelect.value);
 	}
 
-	paginationData(results, index, treeByPage) {
+	data(results, index, treeByPage) {
 		let html = '';
 		if (index == 0)
 			results
@@ -121,7 +120,7 @@ export default class TreeListView extends View {
 		}
 	}
 	nextPage(pages) {
-		if (this.currentPage < Math.ceil(pages.length / treeByPage) - 1) {
+		if (this.currentPage <= Math.ceil(pages.length / pagesPerView) - 1) {
 			this.currentPage++;
 			this.showPage(pages);
 		}

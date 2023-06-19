@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <title>Envoi mail</title>
 
-
-
 </head>
 
 
@@ -21,8 +19,6 @@
     ?>
 
     <p> Your message has been sent successfully. </p>
-
-
 
 </body>
 
